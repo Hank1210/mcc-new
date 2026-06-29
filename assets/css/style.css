@@ -8,24 +8,26 @@
 
 /* ===== CUSTOM PROPERTIES ===== */
 :root {
-  --blue:        #19199c;
-  --blue-dark:   #111175;
-  --blue-light:  #37b5ff;
-  --gray:        #464649;
-  --gray-light:  #8a8a8d;
+  --blue:        #19199c;   /* brand – sparingly for accents */
+  --blue-dark:   #0d0d6b;   /* dark sections, footer */
+  --blue-light:  #37b5ff;   /* highlight/accent only */
+  --ink:         #111827;   /* headings on light bg – near-black */
+  --gray:        #464649;   /* body text */
+  --gray-light:  #6b7280;   /* secondary text */
+  --gray-border: #e5e7eb;   /* borders */
   --white:       #ffffff;
-  --bg:          #f4f6fb;
-  --bg-section:  #eef1f8;
+  --bg:          #f9fafb;   /* subtle section alt */
+  --bg-dark:     #0f1624;   /* dark sections */
 
   --font:        'Poppins', sans-serif;
 
-  --nav-h:       80px;
-  --max-w:       1200px;
+  --nav-h:       68px;
+  --max-w:       1160px;
   --gutter:      clamp(1.25rem, 4vw, 2.5rem);
 
-  --radius:      6px;
-  --shadow:      0 4px 24px rgba(25,25,156,0.10);
-  --shadow-lg:   0 12px 40px rgba(25,25,156,0.16);
+  --radius:      8px;
+  --shadow:      0 2px 16px rgba(0,0,0,0.08);
+  --shadow-lg:   0 8px 32px rgba(0,0,0,0.14);
 
   --ease:        cubic-bezier(0.22, 1, 0.36, 1);
   --dur:         0.55s;
@@ -62,7 +64,7 @@ ul { list-style: none; }
 }
 
 .section--dark {
-  background: var(--blue);
+  background: var(--bg-dark);
   color: var(--white);
 }
 
@@ -83,7 +85,7 @@ ul { list-style: none; }
 /* ===== TYPOGRAPHY ===== */
 h1, h2, h3, h4 {
   font-family: var(--font);
-  color: var(--blue);
+  color: var(--ink);        /* near-black on light backgrounds */
   line-height: 1.2;
   font-weight: 700;
 }
@@ -125,8 +127,8 @@ p:last-child { margin-bottom: 0; }
 }
 
 .nav--scrolled {
-  background: rgba(255,255,255,0.97);
-  box-shadow: 0 1px 20px rgba(25,25,156,0.10);
+  background: rgba(255,255,255,0.98);
+  box-shadow: 0 1px 0 var(--gray-border);
   backdrop-filter: blur(8px);
 }
 
@@ -444,7 +446,7 @@ p:last-child { margin-bottom: 0; }
 .pillar__title {
   font-size: 1.15rem;
   font-weight: 700;
-  color: var(--blue);
+  color: var(--ink);
   margin-bottom: 0.75rem;
   letter-spacing: 0.02em;
 }
@@ -494,7 +496,7 @@ p:last-child { margin-bottom: 0; }
 .why-item__title {
   font-size: 0.95rem;
   font-weight: 600;
-  color: var(--blue);
+  color: var(--ink);
   margin-bottom: 0.25rem;
 }
 
@@ -586,7 +588,7 @@ p:last-child { margin-bottom: 0; }
 .team-card__name {
   font-size: 1.2rem;
   font-weight: 700;
-  color: var(--blue);
+  color: var(--ink);
   margin-bottom: 0.15rem;
 }
 
@@ -681,7 +683,7 @@ p:last-child { margin-bottom: 0; }
 .service-card__title {
   font-size: 1.05rem;
   font-weight: 700;
-  color: var(--blue);
+  color: var(--ink);
   margin-bottom: 0.6rem;
 }
 
@@ -1009,7 +1011,7 @@ p:last-child { margin-bottom: 0; }
 
 /* ===== FOOTER ===== */
 .footer {
-  background: var(--blue);
+  background: var(--bg-dark);
   color: var(--white);
   padding-block: 3.5rem 2rem;
 }

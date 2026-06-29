@@ -6,11 +6,405 @@
   <title>MultiChannelConsult – Ihr Partner für Multichannel-Strategien</title>
   <meta name="description" content="MultiChannelConsult unterstützt Unternehmen bei digitaler Transformation, Marketingberatung und der Integration von Multichannel-Strategien. Ganzheitlich, praxisnah, nachhaltig.">
   <link rel="icon" type="image/png" href="/assets/images/MCC_Website_512-512.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/style.css">
+  <style>
+    /* ── Homepage-spezifische Stile ── */
+
+    /* NAV: startet weiß (kein transparenter Überlap mehr) */
+    .nav {
+      background: rgba(255,255,255,0.98);
+      box-shadow: 0 1px 0 var(--gray-border);
+    }
+    .nav .nav__logo { filter: none; }
+    .nav .nav__link { color: var(--gray); }
+    .nav .nav__link:hover { color: var(--blue); }
+    .nav .nav__lang a { color: var(--gray-light); }
+    .nav .nav__lang a.active,
+    .nav .nav__lang a:hover { color: var(--blue); }
+    .nav .nav__lang { border-color: var(--gray-border); }
+    .nav .nav__lang .sep { color: var(--gray-border); }
+    .nav .hamburger span { background: var(--gray); }
+
+    /* HERO: kompakter, Bild dezenter */
+    .home-hero {
+      min-height: 72vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background: var(--bg-dark);
+      padding-top: var(--nav-h);
+    }
+
+    .home-hero__bg {
+      position: absolute;
+      inset: 0;
+      object-fit: cover;
+      width: 100%; height: 100%;
+      opacity: 0.28;
+    }
+
+    .home-hero__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        105deg,
+        rgba(15,22,36,0.92) 0%,
+        rgba(15,22,36,0.70) 55%,
+        rgba(15,22,36,0.20) 100%
+      );
+    }
+
+    .home-hero__content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: var(--max-w);
+      margin-inline: auto;
+      padding-inline: var(--gutter);
+      padding-block: 5rem 5.5rem;
+    }
+
+    .home-hero__tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue-light);
+      margin-bottom: 1.5rem;
+    }
+    .home-hero__tag::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: var(--blue-light);
+    }
+
+    .home-hero__title {
+      font-size: clamp(2rem, 4.5vw, 3.75rem);
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.12;
+      max-width: 16ch;
+      margin-bottom: 1.25rem;
+    }
+
+    .home-hero__sub {
+      font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+      font-weight: 300;
+      color: rgba(255,255,255,0.72);
+      max-width: 48ch;
+      line-height: 1.75;
+    }
+
+    /* INTRO STRIP */
+    .intro-strip {
+      background: var(--blue);
+      padding-block: 1.25rem;
+    }
+    .intro-strip__inner {
+      max-width: var(--max-w);
+      margin-inline: auto;
+      padding-inline: var(--gutter);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.85);
+      letter-spacing: 0.04em;
+    }
+    .intro-strip__dot {
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: var(--blue-light);
+      flex-shrink: 0;
+    }
+    .intro-strip__item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    /* MISSION SECTION */
+    .mission-intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .mission-intro__left h2 {
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      margin-bottom: 1.25rem;
+      line-height: 1.25;
+    }
+
+    .mission-intro__left p {
+      color: var(--gray-light);
+      font-size: 0.95rem;
+      line-height: 1.75;
+      max-width: 100%;
+    }
+
+    .mission-intro__right {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border-left: 1px solid var(--gray-border);
+      padding-left: 3rem;
+    }
+
+    .pillar-row {
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+      padding-block: 1.5rem;
+      border-bottom: 1px solid var(--gray-border);
+    }
+    .pillar-row:last-child { border-bottom: none; }
+
+    .pillar-row__num {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--blue-light);
+      padding-top: 0.2rem;
+      flex-shrink: 0;
+      width: 2rem;
+    }
+
+    .pillar-row__img {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+      flex-shrink: 0;
+      opacity: 0.85;
+    }
+
+    .pillar-row__body h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 0.3rem;
+    }
+    .pillar-row__body p {
+      font-size: 0.82rem;
+      color: var(--gray-light);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* DIFFERENTIATORS */
+    .diff-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--gray-border);
+      border: 1px solid var(--gray-border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-top: 2.5rem;
+    }
+
+    .diff-item {
+      background: var(--white);
+      padding: 1.75rem;
+      transition: background 0.2s;
+    }
+    .diff-item:hover { background: var(--bg); }
+
+    .diff-item__icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: rgba(55,181,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.85rem;
+    }
+    .diff-item__icon svg {
+      width: 18px; height: 18px;
+      stroke: var(--blue);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .diff-item__title {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 0.3rem;
+    }
+    .diff-item__text {
+      font-size: 0.78rem;
+      color: var(--gray-light);
+      line-height: 1.6;
+    }
+
+    /* VIDEO BAND */
+    .video-band {
+      position: relative;
+      height: 420px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+    .video-band video,
+    .video-band__fallback {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .video-band__mask {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        90deg,
+        rgba(15,22,36,0.92) 0%,
+        rgba(15,22,36,0.70) 40%,
+        transparent 100%
+      );
+      z-index: 1;
+    }
+    .video-band__text {
+      position: relative;
+      z-index: 2;
+      max-width: var(--max-w);
+      width: 100%;
+      margin-inline: auto;
+      padding-inline: var(--gutter);
+    }
+    .video-band__text h2 {
+      color: var(--white);
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      max-width: 18ch;
+      margin-bottom: 0.75rem;
+    }
+    .video-band__text p {
+      color: rgba(255,255,255,0.65);
+      font-size: 0.9rem;
+      max-width: 36ch;
+    }
+
+    /* TEAM SECTION */
+    .team-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 2.5rem;
+    }
+
+    .team-row {
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+      padding: 1.75rem;
+      border: 1px solid var(--gray-border);
+      border-radius: var(--radius);
+      transition: box-shadow 0.25s, border-color 0.25s;
+    }
+    .team-row:hover {
+      box-shadow: var(--shadow);
+      border-color: rgba(55,181,255,0.3);
+    }
+
+    .team-row__img {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: top;
+      flex-shrink: 0;
+    }
+
+    .team-row__name {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 0.1rem;
+    }
+    .team-row__role {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--blue-light);
+      margin-bottom: 0.6rem;
+    }
+    .team-row__bio {
+      font-size: 0.82rem;
+      color: var(--gray-light);
+      line-height: 1.6;
+      margin-bottom: 0.75rem;
+    }
+    .team-row__mail {
+      font-size: 0.8rem;
+      color: var(--blue);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color 0.2s;
+    }
+    .team-row__mail:hover { color: var(--blue-light); }
+    .team-row__mail svg {
+      width: 14px; height: 14px;
+      stroke: currentColor; fill: none;
+      stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+      flex-shrink: 0;
+    }
+
+    /* SECTION LABEL new style */
+    .label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 0.875rem;
+    }
+    .label::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--blue-light);
+      border-radius: 2px;
+    }
+
+    /* Responsive */
+    @media (max-width: 860px) {
+      .mission-intro { grid-template-columns: 1fr; gap: 2.5rem; }
+      .mission-intro__right { border-left: none; padding-left: 0; border-top: 1px solid var(--gray-border); padding-top: 2rem; }
+      .diff-grid { grid-template-columns: 1fr 1fr; }
+      .team-list { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 540px) {
+      .diff-grid { grid-template-columns: 1fr; }
+      .intro-strip__inner { gap: 0.5rem; }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- NAVIGATION -->
+  <!-- NAVIGATION (weiß, immer sichtbar) -->
   <nav class="nav" id="nav">
     <div class="nav__inner">
       <a href="/"><img src="/assets/images/Logo-MCC-Tagline-Final.png" alt="MultiChannelConsult" class="nav__logo"></a>
@@ -42,167 +436,180 @@
     </div>
   </div>
 
-  <!-- HERO -->
-  <section class="hero">
-    <img src="/assets/images/Image_Transformation_1280x630.png" alt="" class="hero__bg" loading="eager">
-    <div class="hero__overlay"></div>
-    <div class="hero__content">
-      <span class="hero__eyebrow">MultiChannelConsult</span>
-      <h1 class="hero__title">Ihr Partner für erfolgreiche <span>Multichannel-</span>Strategien</h1>
-      <p class="hero__subtitle">Wir verbinden digitale und physische Kanäle zu einem nahtlosen Kundenerlebnis – von der Strategie bis zur Umsetzung.</p>
-    </div>
-    <div class="hero__scroll">
-      <div class="hero__scroll-line"></div>
-      <span>Mehr erfahren</span>
+  <!-- HERO: 72vh, dezentes Bild, Text links -->
+  <section class="home-hero">
+    <img src="/assets/images/Image_Transformation_1280x630.png" alt="" class="home-hero__bg" loading="eager">
+    <div class="home-hero__overlay"></div>
+    <div class="home-hero__content">
+      <div class="home-hero__tag">Multichannel · Transformation · Marketing</div>
+      <h1 class="home-hero__title">Ihr Partner für erfolgreiche Multichannel-Strategien</h1>
+      <p class="home-hero__sub">Wir verbinden digitale und physische Kanäle zu einem nahtlosen Kundenerlebnis – von der Strategie bis zur Umsetzung.</p>
     </div>
   </section>
 
-  <!-- MISSION -->
-  <section class="section">
-    <div class="container">
-      <div class="fade-up">
-        <span class="section-label">Unsere Mission</span>
-        <div class="divider"></div>
-        <h2>Ganzheitliche Beratung – von der Strategie zur Realität</h2>
-        <p class="lead">MultiChannelConsult schafft nahtlose Kundenkontaktpunkte durch die Integration digitaler und physischer Kanäle, vernetzter Daten und optimierter Prozesse.</p>
+  <!-- INTRO STRIP: Kompetenzfelder auf einen Blick -->
+  <div class="intro-strip">
+    <div class="intro-strip__inner">
+      <div class="intro-strip__item">
+        <div class="intro-strip__dot"></div>
+        Strategische Beratung
       </div>
-
-      <div class="pillars">
-        <div class="pillar fade-up">
-          <div class="pillar__num">01</div>
-          <img src="/assets/images/MCC_Manage.png" alt="Managing" class="pillar__img">
-          <div class="pillar__title">Managing</div>
-          <p class="pillar__text">Wir etablieren Governance-Strukturen, KPI-Frameworks und standardisierte Prozesse für einen effizienten Multichannel-Betrieb.</p>
-        </div>
-        <div class="pillar fade-up">
-          <div class="pillar__num">02</div>
-          <img src="/assets/images/MCC_Digital.png" alt="Digital" class="pillar__img">
-          <div class="pillar__title">Digital</div>
-          <p class="pillar__text">Integration von Plattformen, Tools und Datensystemen: E-Commerce, ERP, CRM und Social Media zu einer vernetzten Infrastruktur.</p>
-        </div>
-        <div class="pillar fade-up">
-          <div class="pillar__num">03</div>
-          <img src="/assets/images/MCC_Transformation.png" alt="Transformation" class="pillar__img">
-          <div class="pillar__title">Transformation</div>
-          <p class="pillar__text">Wir begleiten Unternehmen bei der kontinuierlichen Weiterentwicklung – durch Mitarbeiterentwicklung, Prozessanpassung und nachhaltigen Wandel.</p>
-        </div>
+      <div class="intro-strip__item">
+        <div class="intro-strip__dot"></div>
+        Digitale Transformation
       </div>
-    </div>
-  </section>
-
-  <!-- VIDEO -->
-  <div class="video-section">
-    <video autoplay muted loop playsinline poster="/assets/images/Image_Transformation_1280x630.png">
-      <source src="/assets/video/MCC-Animation.mp4" type="video/mp4">
-    </video>
-    <img src="/assets/images/Image_Transformation_1280x630.png" alt="" class="video-section__fallback" style="display:none;">
-    <div class="video-section__overlay">
-      <div class="video-section__text fade-up">
-        <h2>Wir denken Multichannel ganzheitlich</h2>
-        <p>Kein paralleles Kanaldenken – sondern vernetzte Systeme, die zusammenarbeiten.</p>
+      <div class="intro-strip__item">
+        <div class="intro-strip__dot"></div>
+        Workflow Automation
+      </div>
+      <div class="intro-strip__item">
+        <div class="intro-strip__dot"></div>
+        Marketing &amp; Vertrieb
+      </div>
+      <div class="intro-strip__item">
+        <div class="intro-strip__dot"></div>
+        Change Management
       </div>
     </div>
   </div>
 
-  <!-- WHY MCC -->
-  <section class="section section--alt">
+  <!-- MISSION: 2-spaltig, Text links, 3 Säulen rechts -->
+  <section class="section">
     <div class="container">
-      <div class="fade-up">
-        <span class="section-label">Warum MultiChannelConsult?</span>
-        <div class="divider"></div>
-        <h2>Was uns auszeichnet</h2>
-      </div>
-      <div class="why-list">
-        <div class="why-item fade-up">
-          <div class="why-item__icon">
-            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-          </div>
-          <div>
-            <div class="why-item__title">Ganzheitliche Beratung</div>
-            <p class="why-item__text">Von der Strategie bis zur operativen Umsetzung – alles aus einer Hand.</p>
-          </div>
+      <div class="mission-intro fade-up">
+        <div class="mission-intro__left">
+          <div class="label">Unsere Mission</div>
+          <h2>Ganzheitliche Beratung – von der Strategie zur Realität</h2>
+          <p>MultiChannelConsult schafft nahtlose Kundenkontaktpunkte durch die Integration digitaler und physischer Kanäle, vernetzter Daten und optimierter Prozesse.</p>
+          <p style="margin-top:0.75rem;">Kein paralleles Kanaldenken – sondern vernetzte Systeme, die zusammenarbeiten und messbaren Geschäftsnutzen erzeugen.</p>
         </div>
-        <div class="why-item fade-up">
-          <div class="why-item__icon">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        <div class="mission-intro__right">
+          <div class="pillar-row">
+            <div class="pillar-row__num">01</div>
+            <img src="/assets/images/MCC_Manage.png" alt="" class="pillar-row__img">
+            <div class="pillar-row__body">
+              <h3>Managing</h3>
+              <p>Governance-Strukturen, KPI-Frameworks und standardisierte Prozesse für effizienten Multichannel-Betrieb.</p>
+            </div>
           </div>
-          <div>
-            <div class="why-item__title">25+ Jahre Erfahrung</div>
-            <p class="why-item__text">Tiefgreifende Expertise in digitaler Transformation und Multichannel-Marketing.</p>
+          <div class="pillar-row">
+            <div class="pillar-row__num">02</div>
+            <img src="/assets/images/MCC_Digital.png" alt="" class="pillar-row__img">
+            <div class="pillar-row__body">
+              <h3>Digital</h3>
+              <p>Integration von E-Commerce, ERP, CRM und Social Media zu einer vernetzten Dateninfrastruktur.</p>
+            </div>
           </div>
-        </div>
-        <div class="why-item fade-up">
-          <div class="why-item__icon">
-            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
-          </div>
-          <div>
-            <div class="why-item__title">Spezialistennetzwerk</div>
-            <p class="why-item__text">Zugang zu einem erfahrenen Netzwerk freier Spezialisten für jedes Projektprofil.</p>
-          </div>
-        </div>
-        <div class="why-item fade-up">
-          <div class="why-item__icon">
-            <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-          </div>
-          <div>
-            <div class="why-item__title">Branchenübergreifend</div>
-            <p class="why-item__text">Expertise aus Handel, Technologie, Finanzen und Konsumgütern.</p>
-          </div>
-        </div>
-        <div class="why-item fade-up">
-          <div class="why-item__icon">
-            <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-          </div>
-          <div>
-            <div class="why-item__title">Hands-on-Ansatz</div>
-            <p class="why-item__text">Praxisorientiert und lösungsfokussiert – für nachhaltigen, messbaren Erfolg.</p>
+          <div class="pillar-row">
+            <div class="pillar-row__num">03</div>
+            <img src="/assets/images/MCC_Transformation.png" alt="" class="pillar-row__img">
+            <div class="pillar-row__body">
+              <h3>Transformation</h3>
+              <p>Mitarbeiterentwicklung, Prozessanpassung und nachhaltiger Wandel als kontinuierlicher Prozess.</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- TEAM TEASER -->
+  <!-- VIDEO BAND -->
+  <div class="video-band">
+    <video autoplay muted loop playsinline>
+      <source src="/assets/video/MCC-Animation.mp4" type="video/mp4">
+    </video>
+    <img src="/assets/images/Image_Transformation_1280x630.png" alt="" class="video-band__fallback" style="display:none;">
+    <div class="video-band__mask"></div>
+    <div class="video-band__text fade-up">
+      <h2>Wir denken Multichannel ganzheitlich</h2>
+      <p>Vernetzte Systeme statt paralleler Kanäle – für messbaren Geschäftsnutzen.</p>
+    </div>
+  </div>
+
+  <!-- WARUM MCC: Grid auf hellem Hintergrund -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="fade-up">
+        <div class="label">Warum MultiChannelConsult?</div>
+        <h2>Was uns auszeichnet</h2>
+      </div>
+
+      <div class="diff-grid">
+        <div class="diff-item fade-up">
+          <div class="diff-item__icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <div class="diff-item__title">Ganzheitliche Beratung</div>
+          <p class="diff-item__text">Von der Strategie bis zur operativen Umsetzung – aus einer Hand.</p>
+        </div>
+        <div class="diff-item fade-up">
+          <div class="diff-item__icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <div class="diff-item__title">25+ Jahre Erfahrung</div>
+          <p class="diff-item__text">Tiefgreifende Expertise in digitaler Transformation und Multichannel-Marketing.</p>
+        </div>
+        <div class="diff-item fade-up">
+          <div class="diff-item__icon">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <div class="diff-item__title">Spezialistennetzwerk</div>
+          <p class="diff-item__text">Erfahrene Spezialisten für jedes Projektprofil – flexibel skalierbar.</p>
+        </div>
+        <div class="diff-item fade-up">
+          <div class="diff-item__icon">
+            <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div class="diff-item__title">Branchenübergreifend</div>
+          <p class="diff-item__text">Expertise aus Handel, Technologie, Finanzen und Konsumgütern.</p>
+        </div>
+        <div class="diff-item fade-up">
+          <div class="diff-item__icon">
+            <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <div class="diff-item__title">Hands-on-Ansatz</div>
+          <p class="diff-item__text">Praxisorientiert und lösungsfokussiert – für nachhaltigen, messbaren Erfolg.</p>
+        </div>
+        <div class="diff-item fade-up">
+          <div class="diff-item__icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <div class="diff-item__title">KI &amp; Automation</div>
+          <p class="diff-item__text">Modernste Automatisierungs­lösungen mit n8n, Make.com und KI-Agenten.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM: kompakte Zeilen-Karten -->
   <section class="section">
     <div class="container">
       <div class="fade-up">
-        <span class="section-label">Das Team</span>
-        <div class="divider"></div>
+        <div class="label">Das Team</div>
         <h2>Erfahrung, die zählt</h2>
-        <p class="lead">Zwei Berater mit komplementärer Expertise und einem gemeinsamen Ziel: Unternehmen erfolgreich in die digitale Zukunft zu führen.</p>
       </div>
 
-      <div class="team-grid">
-        <div class="team-card fade-up">
-          <img src="/assets/images/Daniel_Euler_Portrait_02a.jpg" alt="Alexander Daniel Euler" class="team-card__img">
-          <div class="team-card__body">
-            <div class="team-card__name">Alexander Daniel Euler</div>
-            <div class="team-card__role">Managing Partner</div>
-            <p class="team-card__bio">25+ Jahre Führungserfahrung in digitaler Transformation, Multichannel-Marketing und Vertrieb. Spezialist für den Mittelstand mit Fokus auf Strategie, Organisation und Technologie.</p>
-            <div class="team-card__tags">
-              <span class="tag">Digitale Transformation</span>
-              <span class="tag">Multichannel-Strategie</span>
-              <span class="tag">Change Management</span>
-            </div>
-            <a href="mailto:daniel.euler@multichannelconsult.de" class="team-card__mail">
+      <div class="team-list">
+        <div class="team-row fade-up">
+          <img src="/assets/images/Daniel_Euler_Portrait_02a.jpg" alt="Alexander Daniel Euler" class="team-row__img">
+          <div>
+            <div class="team-row__name">Alexander Daniel Euler</div>
+            <div class="team-row__role">Managing Partner</div>
+            <p class="team-row__bio">25+ Jahre Führungserfahrung in digitaler Transformation, Multichannel-Marketing und Vertrieb. Spezialist für datengetriebene Organisationsentwicklung im Mittelstand.</p>
+            <a href="mailto:daniel.euler@multichannelconsult.de" class="team-row__mail">
               <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
               daniel.euler@multichannelconsult.de
             </a>
           </div>
         </div>
 
-        <div class="team-card fade-up">
-          <img src="/assets/images/Eulerfra-Press-Bus_Office_250808.png" alt="Frank Rüdiger Euler" class="team-card__img">
-          <div class="team-card__body">
-            <div class="team-card__name">Frank Rüdiger Euler</div>
-            <div class="team-card__role">Partner</div>
-            <p class="team-card__bio">Expertise in digitaler Transformation, KI-gestützter Prozessautomatisierung und dem Skalieren digitaler Vertriebskanäle. Erfahrung in internationalen Technologie-, Finanz- und Konsumgüterunternehmen.</p>
-            <div class="team-card__tags">
-              <span class="tag">KI-Automation</span>
-              <span class="tag">Marketing Innovation</span>
-              <span class="tag">Digitale Vertriebskanäle</span>
-            </div>
-            <a href="mailto:eulerfra@multichannelconsult.de" class="team-card__mail">
+        <div class="team-row fade-up">
+          <img src="/assets/images/Eulerfra-Press-Bus_Office_250808.png" alt="Frank Rüdiger Euler" class="team-row__img">
+          <div>
+            <div class="team-row__name">Frank Rüdiger Euler</div>
+            <div class="team-row__role">Partner</div>
+            <p class="team-row__bio">Expertise in KI-gestützter Prozessautomatisierung, Marketing-Innovation und der Skalierung digitaler Vertriebskanäle. Internationale Erfahrung in Technologie, Finanzen und Konsumgütern.</p>
+            <a href="mailto:eulerfra@multichannelconsult.de" class="team-row__mail">
               <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
               eulerfra@multichannelconsult.de
             </a>
@@ -238,5 +645,18 @@
   </footer>
 
   <script src="/assets/js/main.js"></script>
+  <script>
+    // Video fallback
+    const vid = document.querySelector('.video-band video');
+    if (vid) {
+      vid.addEventListener('error', () => {
+        vid.style.display = 'none';
+        const fb = document.querySelector('.video-band__fallback');
+        if (fb) fb.style.display = 'block';
+      });
+    }
+    // Disable scroll-based nav class for homepage (nav is always white)
+    window.removeEventListener('scroll', window.navScrollHandler);
+  </script>
 </body>
 </html>
