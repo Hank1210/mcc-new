@@ -74,8 +74,13 @@
 
     .team-card__img {
       width: 100%;
-      height: auto;
+      aspect-ratio: 1041 / 1366;
+      object-fit: cover;
+      object-position: center top;
       display: block;
+    }
+    .team-card__img--frank {
+      object-position: center 12%;
     }
 
     .team-card__body {
@@ -306,7 +311,7 @@
 
         <!-- Frank Rüdiger Euler -->
         <div class="team-card fade-up">
-          <img src="/assets/images/Eulerfra-Press-Bus_Office_250808.png" alt="Frank Rüdiger Euler" class="team-card__img">
+          <img src="/assets/images/Eulerfra-Press-Bus_Office_250808.png" alt="Frank Rüdiger Euler" class="team-card__img team-card__img--frank">
           <div class="team-card__body">
             <div class="team-card__name">Frank Rüdiger Euler</div>
             <div class="team-card__role">Partner</div>
