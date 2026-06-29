@@ -44,7 +44,7 @@
       inset: 0;
       object-fit: cover;
       width: 100%; height: 100%;
-      opacity: 0.28;
+      opacity: 0.62;
     }
 
     .home-hero__overlay {
@@ -135,71 +135,66 @@
     }
 
     /* MISSION SECTION */
-    .mission-intro {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: start;
+    .mission-head {
+      max-width: 52ch;
+      margin-bottom: 3rem;
     }
-
-    .mission-intro__left h2 {
+    .mission-head h2 {
       font-size: clamp(1.6rem, 3vw, 2.4rem);
-      margin-bottom: 1.25rem;
+      margin-bottom: 1rem;
       line-height: 1.25;
     }
-
-    .mission-intro__left p {
+    .mission-head p {
       color: var(--gray-light);
       font-size: 0.95rem;
       line-height: 1.75;
-      max-width: 100%;
     }
 
-    .mission-intro__right {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-      border-left: 1px solid var(--gray-border);
-      padding-left: 3rem;
+    /* 3-spaltige Pillars */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--gray-border);
+      border: 1px solid var(--gray-border);
+      border-radius: var(--radius);
+      overflow: hidden;
     }
 
-    .pillar-row {
-      display: flex;
-      gap: 1.25rem;
-      align-items: flex-start;
-      padding-block: 1.5rem;
-      border-bottom: 1px solid var(--gray-border);
-    }
-    .pillar-row:last-child { border-bottom: none; }
-
-    .pillar-row__num {
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      color: var(--blue-light);
-      padding-top: 0.2rem;
-      flex-shrink: 0;
-      width: 2rem;
+    .pillar-col {
+      background: var(--white);
+      padding: 2.5rem 2rem;
+      position: relative;
     }
 
-    .pillar-row__img {
-      width: 36px;
-      height: 36px;
+    .pillar-col__num {
+      font-size: 4.5rem;
+      font-weight: 800;
+      color: rgba(25,25,156,0.06);
+      line-height: 1;
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.03em;
+    }
+
+    .pillar-col__img {
+      width: 100px;
+      height: 100px;
       object-fit: contain;
-      flex-shrink: 0;
-      opacity: 0.85;
+      margin-bottom: 1.25rem;
+      display: block;
     }
 
-    .pillar-row__body h3 {
-      font-size: 0.95rem;
-      font-weight: 600;
+    .pillar-col h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
       color: var(--ink);
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.65rem;
     }
-    .pillar-row__body p {
-      font-size: 0.82rem;
+
+    .pillar-col p {
+      font-size: 0.875rem;
       color: var(--gray-light);
-      line-height: 1.6;
+      line-height: 1.7;
       margin: 0;
     }
 
@@ -253,51 +248,57 @@
       line-height: 1.6;
     }
 
-    /* VIDEO BAND */
-    .video-band {
-      position: relative;
-      height: 420px;
-      overflow: hidden;
-      display: flex;
+    /* MC SPLIT (ersetzt Video-Band) */
+    .mc-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
       align-items: center;
     }
-    .video-band video,
-    .video-band__fallback {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    .mc-split__label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue-light);
+      margin-bottom: 1rem;
     }
-    .video-band__mask {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        90deg,
-        rgba(15,22,36,0.92) 0%,
-        rgba(15,22,36,0.70) 40%,
-        transparent 100%
-      );
-      z-index: 1;
+    .mc-split__label::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--blue-light);
+      border-radius: 2px;
     }
-    .video-band__text {
-      position: relative;
-      z-index: 2;
-      max-width: var(--max-w);
-      width: 100%;
-      margin-inline: auto;
-      padding-inline: var(--gutter);
-    }
-    .video-band__text h2 {
+    .mc-split__text h2 {
       color: var(--white);
-      font-size: clamp(1.4rem, 3vw, 2.2rem);
-      max-width: 18ch;
-      margin-bottom: 0.75rem;
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      margin-bottom: 1rem;
+      line-height: 1.2;
     }
-    .video-band__text p {
+    .mc-split__text p {
       color: rgba(255,255,255,0.65);
-      font-size: 0.9rem;
-      max-width: 36ch;
+      font-size: 0.95rem;
+      line-height: 1.75;
+      max-width: 42ch;
+    }
+    .mc-split__img {
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .mc-split__img img {
+      width: 100%;
+      height: 340px;
+      object-fit: cover;
+      display: block;
+    }
+    @media (max-width: 860px) {
+      .mc-split { grid-template-columns: 1fr; gap: 2rem; }
+      .mc-split__img img { height: 240px; }
     }
 
     /* TEAM SECTION */
@@ -308,51 +309,67 @@
       margin-top: 2.5rem;
     }
 
-    .team-row {
-      display: flex;
-      gap: 1.5rem;
-      align-items: flex-start;
-      padding: 1.75rem;
+    .team-card {
       border: 1px solid var(--gray-border);
       border-radius: var(--radius);
+      overflow: hidden;
       transition: box-shadow 0.25s, border-color 0.25s;
     }
-    .team-row:hover {
+    .team-card:hover {
       box-shadow: var(--shadow);
       border-color: rgba(55,181,255,0.3);
     }
 
-    .team-row__img {
-      width: 72px;
-      height: 72px;
-      border-radius: 50%;
+    .team-card__img {
+      width: 100%;
+      height: 220px;
       object-fit: cover;
-      object-position: top;
-      flex-shrink: 0;
+      object-position: center 8%;
+      display: block;
+    }
+    .team-card__img--frank {
+      object-position: center 12%;
     }
 
-    .team-row__name {
-      font-size: 1rem;
+    .team-card__body {
+      padding: 1.75rem;
+    }
+
+    .team-card__name {
+      font-size: 1.15rem;
       font-weight: 700;
       color: var(--ink);
-      margin-bottom: 0.1rem;
+      margin-bottom: 0.15rem;
     }
-    .team-row__role {
+    .team-card__role {
       font-size: 0.72rem;
       font-weight: 600;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--blue-light);
-      margin-bottom: 0.6rem;
+      color: var(--blue);
+      margin-bottom: 1rem;
     }
-    .team-row__bio {
-      font-size: 0.82rem;
+    .team-card__bio {
+      font-size: 0.875rem;
       color: var(--gray-light);
-      line-height: 1.6;
-      margin-bottom: 0.75rem;
+      line-height: 1.7;
+      margin-bottom: 1.1rem;
     }
-    .team-row__mail {
-      font-size: 0.8rem;
+    .team-card__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.25rem;
+    }
+    .team-card__tag {
+      font-size: 0.75rem;
+      padding: 0.3rem 0.75rem;
+      border: 1px solid var(--gray-border);
+      border-radius: 99px;
+      color: var(--gray);
+    }
+    .team-card__mail {
+      font-size: 0.82rem;
       color: var(--blue);
       font-weight: 500;
       display: flex;
@@ -360,8 +377,8 @@
       gap: 0.4rem;
       transition: color 0.2s;
     }
-    .team-row__mail:hover { color: var(--blue-light); }
-    .team-row__mail svg {
+    .team-card__mail:hover { color: var(--blue-light); }
+    .team-card__mail svg {
       width: 14px; height: 14px;
       stroke: currentColor; fill: none;
       stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
@@ -391,8 +408,7 @@
 
     /* Responsive */
     @media (max-width: 860px) {
-      .mission-intro { grid-template-columns: 1fr; gap: 2.5rem; }
-      .mission-intro__right { border-left: none; padding-left: 0; border-top: 1px solid var(--gray-border); padding-top: 2rem; }
+      .pillars-grid { grid-template-columns: 1fr; }
       .diff-grid { grid-template-columns: 1fr 1fr; }
       .team-list { grid-template-columns: 1fr; }
     }
@@ -436,9 +452,11 @@
     </div>
   </div>
 
-  <!-- HERO: 72vh, dezentes Bild, Text links -->
+  <!-- HERO: 72vh, Video als Hintergrund -->
   <section class="home-hero">
-    <img src="/assets/images/Image_Transformation_1280x630.png" alt="" class="home-hero__bg" loading="eager">
+    <video class="home-hero__bg" autoplay muted loop playsinline poster="/assets/images/Image_Transformation_1280x630.png">
+      <source src="/assets/video/MCC-Animation.mp4" type="video/mp4">
+    </video>
     <div class="home-hero__overlay"></div>
     <div class="home-hero__content">
       <div class="home-hero__tag">Multichannel · Transformation · Marketing</div>
@@ -473,58 +491,52 @@
     </div>
   </div>
 
-  <!-- MISSION: 2-spaltig, Text links, 3 Säulen rechts -->
+  <!-- MISSION: Text oben, 3 Pillars nebeneinander -->
   <section class="section">
     <div class="container">
-      <div class="mission-intro fade-up">
-        <div class="mission-intro__left">
-          <div class="label">Unsere Mission</div>
-          <h2>Ganzheitliche Beratung – von der Strategie zur Realität</h2>
-          <p>MultiChannelConsult schafft nahtlose Kundenkontaktpunkte durch die Integration digitaler und physischer Kanäle, vernetzter Daten und optimierter Prozesse.</p>
-          <p style="margin-top:0.75rem;">Kein paralleles Kanaldenken – sondern vernetzte Systeme, die zusammenarbeiten und messbaren Geschäftsnutzen erzeugen.</p>
+      <div class="mission-head fade-up">
+        <div class="label">Unsere Mission</div>
+        <h2>Ganzheitliche Beratung – von der Strategie zur Realität</h2>
+        <p>MultiChannelConsult schafft nahtlose Kundenkontaktpunkte durch die Integration digitaler und physischer Kanäle, vernetzter Daten und optimierter Prozesse. Kein paralleles Kanaldenken – sondern vernetzte Systeme, die zusammenarbeiten.</p>
+      </div>
+      <div class="pillars-grid">
+        <div class="pillar-col fade-up">
+          <div class="pillar-col__num">01</div>
+          <img src="/assets/images/MCC_Manage.png" alt="" class="pillar-col__img">
+          <h3>Managing</h3>
+          <p>Wir etablieren Governance-Strukturen, KPI-Frameworks und standardisierte Prozesse für einen effizienten Multichannel-Betrieb.</p>
         </div>
-        <div class="mission-intro__right">
-          <div class="pillar-row">
-            <div class="pillar-row__num">01</div>
-            <img src="/assets/images/MCC_Manage.png" alt="" class="pillar-row__img">
-            <div class="pillar-row__body">
-              <h3>Managing</h3>
-              <p>Governance-Strukturen, KPI-Frameworks und standardisierte Prozesse für effizienten Multichannel-Betrieb.</p>
-            </div>
-          </div>
-          <div class="pillar-row">
-            <div class="pillar-row__num">02</div>
-            <img src="/assets/images/MCC_Digital.png" alt="" class="pillar-row__img">
-            <div class="pillar-row__body">
-              <h3>Digital</h3>
-              <p>Integration von E-Commerce, ERP, CRM und Social Media zu einer vernetzten Dateninfrastruktur.</p>
-            </div>
-          </div>
-          <div class="pillar-row">
-            <div class="pillar-row__num">03</div>
-            <img src="/assets/images/MCC_Transformation.png" alt="" class="pillar-row__img">
-            <div class="pillar-row__body">
-              <h3>Transformation</h3>
-              <p>Mitarbeiterentwicklung, Prozessanpassung und nachhaltiger Wandel als kontinuierlicher Prozess.</p>
-            </div>
-          </div>
+        <div class="pillar-col fade-up">
+          <div class="pillar-col__num">02</div>
+          <img src="/assets/images/MCC_Digital.png" alt="" class="pillar-col__img">
+          <h3>Digital</h3>
+          <p>Integration von Plattformen, Tools und Datensystemen: E-Commerce, ERP, CRM und Social Media zu einer vernetzten Infrastruktur.</p>
+        </div>
+        <div class="pillar-col fade-up">
+          <div class="pillar-col__num">03</div>
+          <img src="/assets/images/MCC_Transformation.png" alt="" class="pillar-col__img">
+          <h3>Transformation</h3>
+          <p>Wir begleiten Unternehmen bei der kontinuierlichen Weiterentwicklung – durch Mitarbeiterentwicklung, Prozessanpassung und nachhaltigen Wandel.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- VIDEO BAND -->
-  <div class="video-band">
-    <video autoplay muted loop playsinline>
-      <source src="/assets/video/MCC-Animation.mp4" type="video/mp4">
-    </video>
-    <img src="/assets/images/Image_Transformation_1280x630.png" alt="" class="video-band__fallback" style="display:none;">
-    <div class="video-band__mask"></div>
-    <div class="video-band__text fade-up">
-      <h2>Wir denken Multichannel ganzheitlich</h2>
-      <p>Vernetzte Systeme statt paralleler Kanäle – für messbaren Geschäftsnutzen.</p>
+  <!-- MC SPLIT: Text links, Bild rechts -->
+  <section class="section section--dark">
+    <div class="container">
+      <div class="mc-split fade-up">
+        <div class="mc-split__text">
+          <div class="mc-split__label">Unser Ansatz</div>
+          <h2>Wir denken Multichannel ganzheitlich</h2>
+          <p>Vernetzte Systeme statt paralleler Kanäle – für messbaren Geschäftsnutzen und ein nahtloses Kundenerlebnis über alle Touchpoints.</p>
+        </div>
+        <div class="mc-split__img">
+          <img src="/assets/images/Image_Finger_1280x630.png" alt="Multichannel Vernetzung">
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
 
   <!-- WARUM MCC: Grid auf hellem Hintergrund -->
   <section class="section section--alt">
@@ -590,26 +602,36 @@
       </div>
 
       <div class="team-list">
-        <div class="team-row fade-up">
-          <img src="/assets/images/Daniel_Euler_Portrait_02a.jpg" alt="Alexander Daniel Euler" class="team-row__img">
-          <div>
-            <div class="team-row__name">Alexander Daniel Euler</div>
-            <div class="team-row__role">Managing Partner</div>
-            <p class="team-row__bio">25+ Jahre Führungserfahrung in digitaler Transformation, Multichannel-Marketing und Vertrieb. Spezialist für datengetriebene Organisationsentwicklung im Mittelstand.</p>
-            <a href="mailto:daniel.euler@multichannelconsult.de" class="team-row__mail">
+        <div class="team-card fade-up">
+          <img src="/assets/images/Daniel_Euler_Portrait_02a.jpg" alt="Alexander Daniel Euler" class="team-card__img">
+          <div class="team-card__body">
+            <div class="team-card__name">Alexander Daniel Euler</div>
+            <div class="team-card__role">Managing Partner</div>
+            <p class="team-card__bio">25+ Jahre Führungserfahrung in digitaler Transformation, Multichannel-Marketing und Vertrieb. Spezialist für den Mittelstand mit Fokus auf Strategie, Organisation und Technologie.</p>
+            <div class="team-card__tags">
+              <span class="team-card__tag">Digitale Transformation</span>
+              <span class="team-card__tag">Multichannel-Strategie</span>
+              <span class="team-card__tag">Change Management</span>
+            </div>
+            <a href="mailto:daniel.euler@multichannelconsult.de" class="team-card__mail">
               <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
               daniel.euler@multichannelconsult.de
             </a>
           </div>
         </div>
 
-        <div class="team-row fade-up">
-          <img src="/assets/images/Eulerfra-Press-Bus_Office_250808.png" alt="Frank Rüdiger Euler" class="team-row__img">
-          <div>
-            <div class="team-row__name">Frank Rüdiger Euler</div>
-            <div class="team-row__role">Partner</div>
-            <p class="team-row__bio">Expertise in KI-gestützter Prozessautomatisierung, Marketing-Innovation und der Skalierung digitaler Vertriebskanäle. Internationale Erfahrung in Technologie, Finanzen und Konsumgütern.</p>
-            <a href="mailto:eulerfra@multichannelconsult.de" class="team-row__mail">
+        <div class="team-card fade-up">
+          <img src="/assets/images/Eulerfra-Press-Bus_Office_250808.png" alt="Frank Rüdiger Euler" class="team-card__img team-card__img--frank">
+          <div class="team-card__body">
+            <div class="team-card__name">Frank Rüdiger Euler</div>
+            <div class="team-card__role">Partner</div>
+            <p class="team-card__bio">Expertise in digitaler Transformation, KI-gestützter Prozessautomatisierung und dem Skalieren digitaler Vertriebskanäle. Erfahrung in internationalen Technologie-, Finanz- und Konsumgüterunternehmen.</p>
+            <div class="team-card__tags">
+              <span class="team-card__tag">KI-Automation</span>
+              <span class="team-card__tag">Marketing Innovation</span>
+              <span class="team-card__tag">Digitale Vertriebskanäle</span>
+            </div>
+            <a href="mailto:eulerfra@multichannelconsult.de" class="team-card__mail">
               <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
               eulerfra@multichannelconsult.de
             </a>
@@ -646,16 +668,14 @@
 
   <script src="/assets/js/main.js"></script>
   <script>
-    // Video fallback
-    const vid = document.querySelector('.video-band video');
-    if (vid) {
-      vid.addEventListener('error', () => {
-        vid.style.display = 'none';
-        const fb = document.querySelector('.video-band__fallback');
-        if (fb) fb.style.display = 'block';
+    // Hero video fallback (zeigt poster wenn video nicht lädt)
+    const heroVid = document.querySelector('.home-hero__bg');
+    if (heroVid && heroVid.tagName === 'VIDEO') {
+      heroVid.addEventListener('error', () => {
+        heroVid.style.display = 'none';
       });
     }
-    // Disable scroll-based nav class for homepage (nav is always white)
+    // Nav bleibt weiß auf Homepage
     window.removeEventListener('scroll', window.navScrollHandler);
   </script>
 </body>
