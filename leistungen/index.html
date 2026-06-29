@@ -121,14 +121,19 @@
       stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
     }
 
-    /* SELF-PUBLISHING TEASER */
-    .sp-teaser {
-      display: grid;
-      grid-template-columns: 1fr auto;
+    /* SELF-PUBLISHING FRAME */
+    .sp-frame {
+      margin-top: 2.5rem;
+      border: 1px solid var(--gray-border);
+      border-radius: var(--radius);
+      padding: 2rem 2.5rem;
+      display: flex;
       gap: 3rem;
       align-items: center;
+      background: var(--white);
     }
-    .sp-teaser__badge {
+    .sp-frame__left { flex: 1; }
+    .sp-frame__badge {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
@@ -136,10 +141,10 @@
       font-weight: 700;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--blue-light);
-      margin-bottom: 0.875rem;
+      color: var(--blue);
+      margin-bottom: 0.75rem;
     }
-    .sp-teaser__badge::before {
+    .sp-frame__badge::before {
       content: '';
       display: block;
       width: 20px;
@@ -147,51 +152,37 @@
       background: var(--blue-light);
       border-radius: 2px;
     }
-    .sp-teaser h3 {
-      color: var(--white);
-      font-size: clamp(1.2rem, 2.5vw, 1.6rem);
-      margin-bottom: 0.75rem;
+    .sp-frame__title {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--ink);
+      margin-bottom: 0.6rem;
     }
-    .sp-teaser p {
-      color: rgba(255,255,255,0.65);
-      font-size: 0.9rem;
-      line-height: 1.75;
+    .sp-frame__text {
+      font-size: 0.845rem;
+      color: var(--gray-light);
+      line-height: 1.7;
       max-width: 58ch;
+      margin: 0;
     }
-    .sp-teaser__arrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-top: 1.5rem;
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: var(--blue-light);
-      transition: gap 0.2s;
-    }
-    .sp-teaser__arrow:hover { gap: 0.8rem; }
-    .sp-teaser__arrow svg {
-      width: 16px; height: 16px;
-      stroke: currentColor; fill: none;
-      stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
-    }
-    .sp-teaser__books {
+    .sp-frame__books {
       display: grid;
-      grid-template-columns: repeat(3, 68px);
-      gap: 0.6rem;
+      grid-template-columns: repeat(3, 62px);
+      gap: 0.5rem;
+      flex-shrink: 0;
     }
-    .sp-teaser__books img {
-      width: 68px;
+    .sp-frame__books img {
+      width: 62px;
       border-radius: 3px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.12);
       transition: transform 0.2s;
     }
-    .sp-teaser__books img:hover { transform: translateY(-3px); }
+    .sp-frame__books img:hover { transform: translateY(-3px); }
 
     @media (max-width: 900px) {
       .svc-grid { grid-template-columns: 1fr 1fr; }
       .svc-cell--wide { grid-column: span 2; }
-      .sp-teaser { grid-template-columns: 1fr; }
-      .sp-teaser__books { display: none; }
+      .sp-frame { flex-direction: column; gap: 1.5rem; }
+      .sp-frame__books { display: none; }
     }
     @media (max-width: 540px) {
       .svc-grid { grid-template-columns: 1fr; }
@@ -284,7 +275,7 @@
         </div>
 
         <div class="svc-cell svc-cell--link fade-up" onclick="window.location='/automation/'">
-          <img src="/assets/images/MCC_Automation.png" alt="" class="svc-cell__img">
+          <img src="/assets/images/MCC_Automation_KI.png" alt="" class="svc-cell__img">
           <div class="svc-cell__title">Automation &amp; KI</div>
           <p class="svc-cell__text">Workflow-Automatisierung mit n8n und Make.com, KI-gestützte Prozessoptimierung und autonome Agenten für skalierbare Unternehmensabläufe.</p>
           <a href="/automation/" class="svc-cell__link">
@@ -306,20 +297,20 @@
     </div>
   </section>
 
-  <!-- SELF-PUBLISHING TEASER: dunkle Sektion -->
-  <section class="section section--dark">
+  <!-- SELF-PUBLISHING: separater Frame mit Abstand -->
+  <section class="section" style="padding-top: 0;">
     <div class="container">
-      <div class="sp-teaser fade-up">
-        <div>
-          <div class="sp-teaser__badge">Sonderleistung</div>
-          <h3>Self-Publishing &amp; Buch-Veröffentlichung</h3>
-          <p>Als ergänzende Leistung begleiten wir Autoren und Unternehmer auf dem Weg zum eigenen Buch – von der Verlagsberatung über Amazon KDP bis zur Vermarktungsstrategie. 100 % kreative Freiheit, bis zu 70 % Tantiemen bei eBooks.</p>
-          <a href="/leistungen/self-publishing/" class="sp-teaser__arrow">
+      <div class="sp-frame fade-up">
+        <div class="sp-frame__left">
+          <div class="sp-frame__badge">Sonderleistung</div>
+          <h3 class="sp-frame__title">Self-Publishing &amp; Buch-Veröffentlichung</h3>
+          <p class="sp-frame__text">Als ergänzende Leistung begleiten wir Autoren und Unternehmer auf dem Weg zum eigenen Buch – von der Verlagsberatung über Amazon KDP bis zur Vermarktungsstrategie. 100 % kreative Freiheit, bis zu 70 % Tantiemen bei eBooks.</p>
+          <a href="/leistungen/self-publishing/" class="svc-cell__link" style="margin-top:1.25rem;">
             Mehr über Self-Publishing
             <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </a>
         </div>
-        <div class="sp-teaser__books">
+        <div class="sp-frame__books">
           <img src="/assets/images/MCC_Buch_KDP.png" alt="Amazon KDP">
           <img src="/assets/images/MCC_Buch_GH.png" alt="Buchcover">
           <img src="/assets/images/MCC_Buch_Plus.png" alt="Buchcover">
