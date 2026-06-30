@@ -188,7 +188,7 @@ Aktive Seite erhält `nav__link--active`. Auf der Homepage bleibt die Nav **imme
 - **`sitemap.xml`:** 14 URLs mit `xhtml:link`-hreflang-Alternates.
 - **Bei neuer Seite / URL-Änderung:** canonical + hreflang-Paar im `<head>` setzen UND `sitemap.xml` ergänzen.
 - **`.htaccess` nur ins Domain-Root** hochladen, **nicht** nach `/lab/…` (Redirects + `ErrorDocument 404 /index.html` passen nur fürs Root).
-- **Offene SEO-Punkte (TODO):** ~~Bilder → WebP~~ ✅ erledigt (26 MB → 0,9 MB). Noch offen: **Video 7,9 MB** komprimieren (braucht ffmpeg, nicht installiert), echte 404-Seite statt Soft-404, `width`/`height` an `<img>` gegen CLS.
+- **Offene SEO-Punkte (TODO):** ~~Bilder → WebP~~ ✅ (26 MB → 0,9 MB). ~~Hero-Video~~ ✅ (7,9 MB → 0,6 MB, H.264 CRF 30 + faststart, ohne Audio). Noch offen: echte 404-Seite statt Soft-404, `width`/`height` an `<img>` gegen CLS.
 
 ---
 
@@ -225,5 +225,5 @@ git push origin main
 ## Bekannte Limitierungen
 
 - **Kein Templating** — Header/Footer wird in jede HTML-Datei eingefügt; bei globalen Änderungen alle 14 Dateien aktualisieren
-- **ffmpeg nicht installiert** — Video kann nicht komprimiert werden (7.9 MB)
+- **Hero-Video komprimiert** — `MCC-Animation.mp4` 0,6 MB (H.264 CRF 30, faststart, ohne Audio; ffmpeg vorhanden). Neue Videos analog komprimieren.
 - **EN-Seiten:** manuelle Übersetzung, kein i18n
