@@ -1,13 +1,15 @@
-# MultiChannelConsult Website — CLAUDE.md
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Projekt-Kontext
 
 Statische Website für **MultiChannelConsult** (multichannelconsult.de) — Unternehmensberatung mit Fokus auf Transformation und Marketingberatung. Ersetzt die bisherige WordPress/GeneratePress-Site. Kein CMS, keine Build-Tools, direktes SFTP-Deploy auf Strato.
 
 **PRD:** `/Users/FRE_1/Documents/projects-2/MCC-Redesign/PRD-MCC-Redesign.md`
-**Assets-Quelle:** `/Users/FRE_1/Documents/projects-2/MCC-Redesign/`
+**Assets-Quelle:** `/Users/FRE_1/Documents/projects-2/MCC-Redesign/AssetsHeader/` (Quell-Bilder vor Kopie nach `assets/images/`)
 **GitHub:** https://github.com/Hank1210/mcc-new
-**Live:** https://multichannelconsult.de (noch alt, noch nicht deployed)
+**Live:** https://multichannelconsult.de
 
 ---
 
@@ -15,8 +17,8 @@ Statische Website für **MultiChannelConsult** (multichannelconsult.de) — Unte
 
 - **Vanilla HTML + CSS + JS** — kein Framework, kein Build-Tool
 - **Deployment:** SFTP via VS Code Extension auf Strato
-- **Bildgenerierung:** Kie.ai Nano Banana 2 API — Key in `.env` als `KIE_AI_API_Key` (in `/Users/FRE_1/Documents/projects-2/MCC-Redesign/.env`, nicht im Repo)
-- **Lokaler Dev-Server:** `python3 -m http.server 8080` im Repo-Root
+- **Bildgenerierung:** Kie.ai Nano Banana 2 API — Key in `.env` als `KIE_AI_API_Key` (in `/Users/FRE_1/Documents/projects-2/MCC-Redesign/.env`, **nicht im Repo**)
+- **Lokaler Dev-Server:** `python3 -m http.server 8080` im Repo-Root → http://localhost:8080
 
 ---
 
@@ -27,35 +29,24 @@ Statische Website für **MultiChannelConsult** (multichannelconsult.de) — Unte
 | Variable | Hex | Verwendung |
 |---|---|---|
 | `--blue` | `#19199c` | Brand-Akzent sparsam (Labels, Icons, Links) |
-| `--blue-dark` | `#0d0d6b` | — (Reserve) |
 | `--blue-light` | `#37b5ff` | Highlight, Akzentstriche, Hover |
 | `--ink` | `#111827` | Alle Headings auf hellem Hintergrund |
 | `--gray` | `#464649` | Body-Text |
 | `--gray-light` | `#6b7280` | Sekundärer Text, Subtitles |
 | `--gray-border` | `#e5e7eb` | Rahmen, Trennlinien |
-| `--white` | `#ffffff` | Hintergrund helle Sektionen |
 | `--bg` | `#f9fafb` | Leichter Sektion-Alt-Hintergrund |
-| `--bg-dark` | `#0f1624` | Dunkle Sektionen + Footer (kein reines Blau!) |
+| `--bg-dark` | `#0f1624` | Dunkle Sektionen + Footer |
 
-### Kritische Design-Entscheidungen
-- **Headings auf weißem BG:** immer `--ink` (#111827), NICHT `--blue`
-- **Blau nur sparsam:** Labels, Akzentstriche (`::before`), Icon-Hintergründe, Links
-- **Dunkle Sektionen:** `--bg-dark` (#0f1624 dunkelnavygrau), nicht reines `--blue`
-- **Hero-Höhe:** 72vh (nicht 100vh), Bild-Opacity max 28–45%
-- **Nav:** immer weiß sichtbar auf Homepage; transparent→weiß auf Unterseiten via scroll
+### Kritische Design-Regeln
+- **Headings auf weißem BG:** immer `--ink`, NICHT `--blue`
+- **Blau nur sparsam:** Labels, `::before`-Akzentstriche, Icon-Hintergründe, Links
+- **Dunkle Sektionen:** `--bg-dark` (dunkelnavygrau), nicht reines `--blue`
+- **Hero-Bilder:** `opacity: 0.92` auf `.hero__bg`, Overlay-Gradient `105deg rgba(15,22,36,0.82)→0.45→0.05`
+- **Homepage-Hero:** Video-Hintergrund, `opacity: 0.62`, stärkerer Overlay
 
 ### Typography
-
-- **Font:** Poppins (Google Fonts CDN) — 300, 400, 500, 600, 700
-- **Logo-Font:** HeroLightBolt (nur im Logo-PNG, nicht als Webfont laden)
+- **Font:** Poppins (Google Fonts CDN, alle Seiten im `<head>`) — 300, 400, 500, 600, 700
 - **Basis:** 16px, 1.65 line-height
-
-### Sektion-Rhythmus (Homepage-Vorbild)
-```
-Weißer Nav → Dunkler Hero (~72vh) → Blauer Intro-Strip
-→ Weiße Mission-Sektion → Dunkles Video-Band
-→ Hellgrauer Grid → Weiße Team-Sektion → Dunkler Footer
-```
 
 ---
 
@@ -63,14 +54,14 @@ Weißer Nav → Dunkler Hero (~72vh) → Blauer Intro-Strip
 
 ```
 mcc-new/
-├── index.html                          ← Homepage DE (hat eigene inline Stile im <style>-Tag)
+├── index.html                          ← Homepage DE
 ├── leistungen/index.html               ← Leistungen DE
-│   └── self-publishing/index.html      ← Sonderleistung, NICHT in Hauptnav
-├── automation/index.html               ← Automation DE
-├── team/index.html                     ← Team DE
-├── impressum/index.html                ← Impressum (Inhalt unverändert!)
-├── datenschutz/index.html              ← Datenschutz (Inhalt unverändert!)
-├── en/                                 ← EN-Mirror, gleiche Struktur
+│   └── self-publishing/index.html
+├── automation/index.html
+├── team/index.html
+├── impressum/index.html                ← Inhalt NIEMALS ändern (rechtlich)
+├── datenschutz/index.html              ← Inhalt NIEMALS ändern (rechtlich)
+├── en/                                 ← EN-Mirror, identische Layouts
 │   ├── index.html
 │   ├── services/index.html
 │   │   └── self-publishing/index.html
@@ -80,114 +71,123 @@ mcc-new/
 │   └── privacy-policy/index.html
 ├── assets/
 │   ├── css/style.css                   ← EINZIGE globale CSS-Datei
-│   ├── js/main.js                      ← Nav-Scroll, Hamburger, Scroll-Animationen
-│   ├── images/                         ← Alle Bilder (aus MCC-Redesign/Assets* kopiert)
-│   └── video/MCC-Animation.mp4         ← 7.9 MB (ffmpeg nicht verfügbar zum Komprimieren)
-├── .htaccess                           ← Caching, Sicherheitsheader, 404
-└── CLAUDE.md                           ← diese Datei
+│   ├── js/main.js                      ← Nav-Scroll, Hamburger, fade-up Animationen
+│   ├── images/
+│   └── video/MCC-Animation.mp4
+└── .htaccess
 ```
 
 ---
 
-## Navigation
+## Seitenstruktur & CSS-Patterns
 
-**Hauptnav (DE):** Leistungen | Automation | Team + DE|EN Sprachumschalter
-**Self-Publishing:** nicht in Hauptnav — nur via Leistungen-Seite erreichbar
-**Sprachumschalter:** jede Seite verlinkt auf ihre EN/DE-Entsprechung
+### Jede Seite enthält
+1. `<link>` auf Poppins Google Font
+2. `<link>` auf `/assets/css/style.css`
+3. Seitenspezifische `<style>`-Block mit page-level Overrides (inkl. `.label`-Definition)
+4. Nav (desktop) + `nav__mobile` (mobile) + Content-Sektionen + Footer
+5. `<script src="/assets/js/main.js">`
 
----
+### Navigation (DE)
+```
+Über uns | Leistungen | Automation | Team  +  DE | EN
+```
+Aktive Seite erhält `nav__link--active`. Auf der Homepage bleibt die Nav **immer weiß** (kein scroll-transparenz). CSS-Spezifität beachten: `.nav .nav__link--active` (0,2,0) muss nach `.nav .nav__link` stehen.
 
-## Asset-Mapping
+### Homepage-spezifische Layouts (`index.html`)
 
-| Datei | Seite/Verwendung |
+| CSS-Klasse | Beschreibung |
 |---|---|
-| `Logo-MCC-Tagline-Final.png` | Nav + Footer auf allen Seiten |
-| `MCC_Website_512-512.png` | Favicon (`<link rel="icon">`) |
-| `Image_Transformation_1280x630.png` | Hero: Homepage + Team |
-| `Image_Zahnräder_1280x630.png` | Hero: Leistungen |
-| `Image_Finger_1280x630.png` | Hero: Automation |
-| `Image_Ausrufe_1280x630.png` | Hero: Self-Publishing |
-| `MCC_Manage/Digital/Transformation.png` | Homepage Mission-Säulen |
-| `MCC_Leistung_*.png` | Service-Cards auf Leistungen-Seite |
-| `MCC_Buch_*.png` (7 Stück) | Buchgrid auf Self-Publishing |
-| `Daniel_Euler_Portrait_02a.jpg` | Team (Alexander Daniel Euler) |
-| `Eulerfra-Press-Bus_Office_250808.png` | Team (Frank Rüdiger Euler) |
-| `KI-Workflow.jpg` | Automation (Content-Bild) |
-| `ChatBot-Case.png` | Automation (Case Study) |
-| `MCC-Animation.mp4` | Homepage Video-Band (autoplay muted loop) |
+| `.home-hero` + `.home-hero__bg` (video) | 72vh Hero mit Video-Hintergrund (opacity 0.62) |
+| `.home-hero__tag` | Eyebrow mit `::before`-Linie |
+| `.intro-strip` | Blauer Banner unter Hero mit Kompetenzfeldern |
+| `.mission-head` + `.pillars-grid` / `.pillar-col` | 3-spaltige Mission-Karten mit Ghost-Zahlen (4.5rem, opacity 0.06) |
+| `.pillar-col:hover` | Hover: hellgrauer BG + blauer Top-Balken via `::after` |
+| `.mc-split` | Dunkle Section: Text links + Bild rechts |
+| `.diff-grid` | 3×2 Grid „Was uns auszeichnet" |
+| `.team-list` | 2-spaltige Team-Karten (400px Bildhöhe) |
+
+### Unterseiten-Layouts
+
+| Seite | Key-Layouts |
+|---|---|
+| `leistungen/` | `.svc-grid` (3-col) + `.svc-cell--wide` (volle Breite) + `.sp-frame` (SP-Teaser) |
+| `automation/` | `.intro-split` (1fr 1.4fr) + `.stufen-grid` + `.vorteile-grid` (dark) + `.case-split` |
+| `team/` | `.team-grid` (2-col) + `.team-card__schwerpunkte` (Bullet-Liste) + `.team-card__links` |
+| `leistungen/self-publishing/` | `.pub-grid` (4-col) + `.sp-section` + `.svc-list` + `.notice-box` |
 
 ---
 
-## Regeln & Constraints
+## Asset-Mapping (aktuell)
 
-### Was NIE geändert werden darf
-- Inhalt von `impressum/index.html` und `datenschutz/index.html` (rechtlich fixiert)
-- Keine CTAs oder Kontaktformulare einfügen
-- Keine externen Abhängigkeiten außer Google Fonts CDN
-
-### Pfade
-- Alle Asset-Pfade sind **absolut** (`/assets/images/...`) — funktioniert auf Strato und lokal mit Dev-Server
-- Kein `../` oder relative Pfade verwenden
-
-### HTML-Muster
-- Jede Seite hat Nav + Mobile-Nav + Content + Footer als vollständiges HTML-Dokument
-- Homepage (`index.html`) hat zusätzliche `<style>`-Tags für seitenspezifische Overrides
-- Andere Seiten verwenden ausschließlich `assets/css/style.css`
-
-### CSS-Klassen-Konventionen
-- `.section` — Standard-Padding-Block
-- `.section--alt` — Hellgrauer Hintergrund (`--bg`)
-- `.section--dark` — Dunkler Hintergrund (`--bg-dark`)
-- `.container` — Max-Width + Gutter
-- `.fade-up` — Scroll-Animation (via IntersectionObserver in main.js)
-- `.label` — Kleines Eyebrow-Label mit blauem AkzentStrich `::before`
-- `.nav--scrolled` — wird via JS auf `.nav` gesetzt beim Scrollen
+| Datei | Verwendung |
+|---|---|
+| `Logo-MCC-Tagline-Final.png` | Nav + Footer, alle Seiten |
+| `MCC_Website_512-512.png` | Favicon |
+| `Image-Together.png` | Homepage mc-split (DE + EN) |
+| `Image_Finger-N.png` | Hero: Team (DE + EN) |
+| `Image_KI_1280x630.png` | Hero: Automation |
+| `Image_Zahnräder_1280x630.png` | Hero: Leistungen/Services |
+| `Image_Buch_mod.png` | Hero: Self-Publishing |
+| `Image_Transformation_1280x630.png` | Homepage Video-Poster-Fallback |
+| `Daniel_Euler_Square.jpg` | Team-Foto Homepage (759×759px) |
+| `Eulerfra-Press_Square.png` | Team-Foto Homepage (500×500px) |
+| `Daniel_Euler_Portrait_02a.jpg` | Team-Foto Teamseite (Hochformat) |
+| `Eulerfra-Press-Bus_Office_250808.png` | Team-Foto Teamseite (Hochformat) |
+| `MCC_Manage/Digital/Transformation.png` | Pillars-Grid Homepage |
+| `MCC_Leistung_*.png` | Service-Zellen Leistungen |
+| `MCC_Automation_KI.png` | Wide-Cell Leistungen (verlinkt auf Automation) |
+| `MCC_Buch_*.png` (7 Stück) | Buchgrid Self-Publishing + sp-frame |
+| `KI-Workflow.jpg` | Automation Intro-Split |
+| `ChatBot-Case.png` | Automation Case Study |
 
 ---
 
-## Bildgenerierung (Nano Banana 2)
+## Globale CSS-Klassen (style.css)
 
-Für neue Bilder wenn nötig:
-```bash
-# Step 1: Task erstellen
-curl --location 'https://api.kie.ai/api/v1/jobs/createTask' \
-  --header 'Authorization: Bearer <KIE_AI_API_Key>' \
-  --header 'Content-Type: application/json' \
-  --data '{
-    "model": "nano-banana-2",
-    "input": {
-      "prompt": "...",
-      "aspect_ratio": "16:9",
-      "resolution": "1K",
-      "output_format": "png"
-    }
-  }'
-# Gibt taskId zurück → dann Status pollen bis completed
-```
+| Klasse | Bedeutung |
+|---|---|
+| `.section` | Standard-Padding-Block |
+| `.section--alt` | Hellgrauer Hintergrund (`--bg`) |
+| `.section--dark` | Dunkler Hintergrund (`--bg-dark`) |
+| `.container` | Max-Width + Gutter |
+| `.fade-up` | Scroll-Animation via IntersectionObserver |
+| `.label` | Eyebrow-Label mit blauem `::before`-Strich — muss auf jeder Seite im `<style>`-Block definiert werden |
+| `.hero.hero--sub` | Standard Unterseiten-Hero |
+| `.nav--scrolled` | Wird via JS gesetzt beim Scrollen (Unterseiten) |
+
+---
+
+## Regeln
+
+- **Alle Asset-Pfade absolut:** `/assets/images/...` — kein `../`
+- **Neue Bilder:** aus `MCC-Redesign/AssetsHeader/` nach `assets/images/` kopieren, dann referenzieren
+- **Globale Nav-Änderungen** müssen in allen 14 HTML-Dateien durchgeführt werden (kein Templating)
+- **EN-Seiten** sind strukturell identisch mit DE — gleiche CSS-Klassen, gleiche Layouts, nur Texte übersetzt
+- **Self-Publishing** ist nicht in der Hauptnavigation — nur via Leistungen-Seite erreichbar
+- `.env` mit API-Keys darf **niemals** committet werden
 
 ---
 
 ## Deployment
 
 ```bash
-# Lokaler Dev-Server starten
+# Lokaler Dev-Server
 cd /Users/FRE_1/Documents/projects-2/mcc-new
 python3 -m http.server 8080
-# → http://localhost:8080
 
 # Git
-git add -A
+git add <files>
 git commit -m "..."
-git push origin main   # → https://github.com/Hank1210/mcc-new
+git push origin main
 
 # SFTP auf Strato: via VS Code SFTP Extension
-# Ziel: Strato Webhosting Root
 ```
 
 ---
 
 ## Bekannte Limitierungen
 
-- **ffmpeg nicht installiert** — Video kann nicht komprimiert werden (aktuell 7.9 MB)
-- **Keine Templating-Engine** — Header/Footer wird in jede HTML-Datei copy-paste eingefügt; bei globalen Änderungen alle Dateien aktualisieren
-- **EN-Seiten** sind direkte Übersetzungen, kein automatisches i18n
+- **Kein Templating** — Header/Footer wird in jede HTML-Datei eingefügt; bei globalen Änderungen alle 14 Dateien aktualisieren
+- **ffmpeg nicht installiert** — Video kann nicht komprimiert werden (7.9 MB)
+- **EN-Seiten:** manuelle Übersetzung, kein i18n
