@@ -72,12 +72,16 @@ mcc-new/
 ├── assets/
 │   ├── css/style.css                   ← EINZIGE globale CSS-Datei
 │   ├── js/main.js                      ← Nav-Scroll, Hamburger, fade-up Animationen
+│   ├── js/consent.js                   ← Cookie-Consent + GA4 (consent-gated)
 │   ├── images/
 │   └── video/MCC-Animation.mp4
+├── lab/                                ← Deeplink-Unterbereich (eigenständig, siehe „Lab")
+│   ├── index.html                      ← DE
+│   └── en/index.html                   ← EN
 ├── 404.html                            ← Fehlerseite (root-absolute Pfade, noindex)
 ├── robots.txt                          ← Allow /, Disallow /lab/, Sitemap-Verweis
 ├── sitemap.xml                         ← 14 URLs mit hreflang-Alternates
-└── .htaccess                           ← inkl. 301 http→https & www→non-www
+└── .htaccess                           ← inkl. 301 http→https, www→non-www, /lab→/lab/
 ```
 
 ---
@@ -188,13 +192,26 @@ Aktive Seite erhält `nav__link--active`. Auf der Homepage bleibt die Nav **imme
   | `/impressum/` | `/en/legal-notice/` |
   | `/datenschutz/` | `/en/privacy-policy/` |
 
-- **`robots.txt`:** erlaubt alles, `Disallow: /lab/` (Test-Unterordner nicht indexieren), verweist auf `sitemap.xml`.
+- **`robots.txt`:** erlaubt alles, `Disallow: /lab/` (Deeplink-Bereich nicht indexieren, siehe „Lab"), verweist auf `sitemap.xml`.
 - **`sitemap.xml`:** 14 URLs mit `xhtml:link`-hreflang-Alternates.
 - **Bei neuer Seite / URL-Änderung:** canonical + hreflang-Paar im `<head>` setzen UND `sitemap.xml` ergänzen.
 - **`.htaccess` nur ins Domain-Root** hochladen, **nicht** nach `/lab/…` (Redirects + `ErrorDocument 404 /index.html` passen nur fürs Root).
 - **404-Seite:** `404.html` (eigenständig, dunkel, `noindex`, **root-absolute Pfade** `/assets/…` weil ErrorDocument für beliebige URL-Tiefen ausgeliefert wird — bewusste Ausnahme von der Relativ-Regel). `.htaccess`: `ErrorDocument 404 /404.html`.
 - **CLS:** alle `<img>` haben `width`/`height` (intrinsische WebP-Maße) → reservierter Platz vor dem Laden.
 - **Performance erledigt:** Bilder → WebP (26 MB → 0,9 MB), Hero-Video H.264 CRF 30 + faststart ohne Audio (7,9 MB → 0,6 MB).
+
+---
+
+## Lab-Unterbereich (`/lab`)
+
+Eigenständiger **Deeplink-Bereich** unter `multichannelconsult.de/lab` — nur über direkten Link erreichbar, **nicht** in der Hauptnav, **noindex**.
+
+- **Erreichbar via** `.htaccess`-Redirect `^lab/?$ → /lab/` (case-insensitiv `[NC]`, inkl. Trailing-Slash; `RewriteCond !^/lab/$` verhindert Loop). Crawling per `robots.txt → Disallow: /lab/` ausgeschlossen.
+- **Self-contained:** `lab/index.html` (DE) + `lab/en/index.html` (EN) bringen **eigene Inline-Styles** mit (kein Bezug auf `/assets/css/style.css`), eigene lokale Assets (`mcc_lab_mod.jpg` Banner u. a.). Optisch ans MCC-Design angeglichen (Poppins, Farbtokens, Hero mit Overlay, Cards, Label-Eyebrows).
+- **Nav:** nur **Logo + DE/EN-Schalter** (keine weiteren Punkte, kein Link zur Hauptseite). Verhalten wie die Unterseiten: `position:fixed` transparent über dem Hero, wird beim Scrollen weiß (`nav--scrolled` via kleinem Inline-Script, `--nav-h:68px`). Logo = **absolutes WebP** `https://multichannelconsult.de/assets/images/Logo-MCC-Tagline-Final.webp` (44px; lädt nur online, nicht via `file://`).
+- **Sprachpaar:** DE `lab/index.html` ↔ EN `lab/en/index.html` (EN-Pfade via `../`). Alle Seiten tragen die `noindex`-Metas.
+- **Inhalt** sind kuratierte Testlinks (Dummies). Enthält auch eine große Doku-Datei (`1-2-3 TrauDich Design System.html`, ~16 MB) — bewusst dabei. Unterprojekte: `lab/trau/`, `lab/lingarda/`.
+- **SFTP-Hygiene:** `.vscode/sftp.json` `ignore` schließt u. a. `**/CLAUDE.md` und `*.code-workspace` aus, damit Dev-Dateien aus `lab/` nicht hochgeladen werden.
 
 ---
 
