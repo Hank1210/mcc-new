@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://multichannelconsult.de/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://multichannelconsult.de/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://multichannelconsult.de/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://multichannelconsult.de/"/>
+  </url>
+  <url>
+    <loc>https://multichannelconsult.de/en/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://multichannelconsult.de/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://multichannelconsult.de/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://multichannelconsult.de/"/>
+  </url>
+  <url>
+    <loc>https://multichannelconsult.de/leistungen/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://multichannelconsult.de/leistungen/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://multichannelconsult.de/en/services/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://multichannelconsult.de/leistungen/"/>
+  </url>
+  <url>
+    <loc>https://multichannelconsult.de/en/services/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://multichannelconsult.de/leistungen/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://multichannelconsult.de/en/services/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://multichannelconsult.de/leistungen/"/>
+  </url>
+  <url>
+    <loc>https://multichannelconsult.de/leistungen/self-publishing/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://multichannelconsult.de/leistungen/self-publishing/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://multichannelconsult.de/en/services/self-publishing/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://multichannelconsult.de/leistungen/self-publishing/"/>
+  </url>
+  <url>
+    <loc>https://multichannelconsult.de/en/services/self-publishing/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://multichannelconsult.de/leistungen/self-publishing/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://multichannelconsult.de/en/services/self-publishing/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://multichannelconsult.de/leistungen/self-publishing/"/>
+  </url>
+  <url>
+    <loc>https://multichannelconsult.de/automation/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://multichannelconsult.de/automation/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://multichannelconsult.de/en/automation/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://multichannelconsult.de/automation/"/>
+  </url>
+  <url>
+    <loc>https://multichannelconsult.de/en/automation/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://multichannelconsult.de/automation/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://multichannelconsult.de/en/automation/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://multichannelconsult.de/automation/"/>
+  </url>
+  <url>
+    <loc>https://multichannelconsult.de/team/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://multichannelconsult.de/team/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://multichannelconsult.de/en/team/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://multichannelconsult.de/team/"/>
+  </url>
+  <url>
+    <loc>https://multichannelconsult.de/en/team/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://multichannelconsult.de/team/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://multichannelconsult.de/en/team/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://multichannelconsult.de/team/"/>
+  </url>
+  <url>
+    <loc>https://multichannelconsult.de/impressum/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://multichannelconsult.de/impressum/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://multichannelconsult.de/en/legal-notice/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://multichannelconsult.de/impressum/"/>
+  </url>
+  <url>
+    <loc>https://multichannelconsult.de/en/legal-notice/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://multichannelconsult.de/impressum/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://multichannelconsult.de/en/legal-notice/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://multichannelconsult.de/impressum/"/>
+  </url>
+  <url>
+    <loc>https://multichannelconsult.de/datenschutz/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://multichannelconsult.de/datenschutz/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://multichannelconsult.de/en/privacy-policy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://multichannelconsult.de/datenschutz/"/>
+  </url>
+  <url>
+    <loc>https://multichannelconsult.de/en/privacy-policy/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://multichannelconsult.de/datenschutz/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://multichannelconsult.de/en/privacy-policy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://multichannelconsult.de/datenschutz/"/>
+  </url>
+</urlset>
