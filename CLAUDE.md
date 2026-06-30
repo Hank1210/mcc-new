@@ -74,7 +74,9 @@ mcc-new/
 │   ├── js/main.js                      ← Nav-Scroll, Hamburger, fade-up Animationen
 │   ├── images/
 │   └── video/MCC-Animation.mp4
-└── .htaccess
+├── robots.txt                          ← Allow /, Disallow /lab/, Sitemap-Verweis
+├── sitemap.xml                         ← 14 URLs mit hreflang-Alternates
+└── .htaccess                           ← inkl. 301 http→https & www→non-www
 ```
 
 ---
@@ -82,11 +84,13 @@ mcc-new/
 ## Seitenstruktur & CSS-Patterns
 
 ### Jede Seite enthält
-1. `<link>` auf Poppins Google Font
-2. `<link>` auf `style.css` (relativer Pfad je Verzeichnistiefe, z. B. `../assets/css/style.css`)
-3. Seitenspezifische `<style>`-Block mit page-level Overrides (inkl. `.label`-Definition)
-4. Nav (desktop) + `nav__mobile` (mobile) + Content-Sektionen + Footer
-5. `<script src="...assets/js/main.js">` (relativ)
+1. `<title>` (einzigartig) + `<meta name="description">`
+2. `<link>` auf Poppins Google Font
+3. `<link>` auf `style.css` (relativer Pfad je Verzeichnistiefe, z. B. `../assets/css/style.css`)
+4. **SEO-Block** (vor `</head>`, siehe Abschnitt „SEO"): canonical, hreflang (de/en/x-default), Open Graph + Twitter Cards; Startseiten + Team-Seiten zusätzlich JSON-LD
+5. Seitenspezifische `<style>`-Block mit page-level Overrides (inkl. `.label`-Definition)
+6. Nav (desktop) + `nav__mobile` (mobile) + Content-Sektionen + Footer
+7. `<script src="...assets/js/main.js">` (relativ)
 
 ### Navigation (DE)
 ```
@@ -160,6 +164,31 @@ Aktive Seite erhält `nav__link--active`. Auf der Homepage bleibt die Nav **imme
 | `.label` | Eyebrow-Label mit blauem `::before`-Strich — muss auf jeder Seite im `<style>`-Block definiert werden |
 | `.hero.hero--sub` | Standard Unterseiten-Hero |
 | `.nav--scrolled` | Wird via JS gesetzt beim Scrollen (Unterseiten) |
+
+---
+
+## SEO
+
+- **Kanonische Domain:** `https://multichannelconsult.de` (**ohne www**). www + http werden per `.htaccess` 301 dorthin geleitet. Alle absoluten SEO-URLs (canonical, hreflang, OG, sitemap) nutzen diese Form.
+- **Pro Seite im `<head>` (vor `</head>`):** `canonical`, `hreflang` (de/en/x-default), Open Graph (`og:*`) + Twitter Cards. OG-Bild: `Image_Transformation_1280x630.png` (Automation: `Image_KI_1280x630.png`), 1280×630.
+- **JSON-LD:** `ProfessionalService` auf den Startseiten (`/`, `/en/`), `Person` (×2) auf den Team-Seiten.
+- **hreflang-/canonical-Mapping DE↔EN** (clean URLs mit Trailing Slash, x-default = DE):
+
+  | DE | EN |
+  |---|---|
+  | `/` | `/en/` |
+  | `/leistungen/` | `/en/services/` |
+  | `/leistungen/self-publishing/` | `/en/services/self-publishing/` |
+  | `/automation/` | `/en/automation/` |
+  | `/team/` | `/en/team/` |
+  | `/impressum/` | `/en/legal-notice/` |
+  | `/datenschutz/` | `/en/privacy-policy/` |
+
+- **`robots.txt`:** erlaubt alles, `Disallow: /lab/` (Test-Unterordner nicht indexieren), verweist auf `sitemap.xml`.
+- **`sitemap.xml`:** 14 URLs mit `xhtml:link`-hreflang-Alternates.
+- **Bei neuer Seite / URL-Änderung:** canonical + hreflang-Paar im `<head>` setzen UND `sitemap.xml` ergänzen.
+- **`.htaccess` nur ins Domain-Root** hochladen, **nicht** nach `/lab/…` (Redirects + `ErrorDocument 404 /index.html` passen nur fürs Root).
+- **Offene SEO-Punkte (TODO):** Performance (Video 7,9 MB + Bilder 26 MB → WebP/Komprimierung), echte 404-Seite statt Soft-404, `width`/`height` an `<img>` gegen CLS.
 
 ---
 
