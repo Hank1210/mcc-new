@@ -74,6 +74,7 @@ mcc-new/
 │   ├── js/main.js                      ← Nav-Scroll, Hamburger, fade-up Animationen
 │   ├── images/
 │   └── video/MCC-Animation.mp4
+├── 404.html                            ← Fehlerseite (root-absolute Pfade, noindex)
 ├── robots.txt                          ← Allow /, Disallow /lab/, Sitemap-Verweis
 ├── sitemap.xml                         ← 14 URLs mit hreflang-Alternates
 └── .htaccess                           ← inkl. 301 http→https & www→non-www
@@ -188,7 +189,9 @@ Aktive Seite erhält `nav__link--active`. Auf der Homepage bleibt die Nav **imme
 - **`sitemap.xml`:** 14 URLs mit `xhtml:link`-hreflang-Alternates.
 - **Bei neuer Seite / URL-Änderung:** canonical + hreflang-Paar im `<head>` setzen UND `sitemap.xml` ergänzen.
 - **`.htaccess` nur ins Domain-Root** hochladen, **nicht** nach `/lab/…` (Redirects + `ErrorDocument 404 /index.html` passen nur fürs Root).
-- **Offene SEO-Punkte (TODO):** ~~Bilder → WebP~~ ✅ (26 MB → 0,9 MB). ~~Hero-Video~~ ✅ (7,9 MB → 0,6 MB, H.264 CRF 30 + faststart, ohne Audio). Noch offen: echte 404-Seite statt Soft-404, `width`/`height` an `<img>` gegen CLS.
+- **404-Seite:** `404.html` (eigenständig, dunkel, `noindex`, **root-absolute Pfade** `/assets/…` weil ErrorDocument für beliebige URL-Tiefen ausgeliefert wird — bewusste Ausnahme von der Relativ-Regel). `.htaccess`: `ErrorDocument 404 /404.html`.
+- **CLS:** alle `<img>` haben `width`/`height` (intrinsische WebP-Maße) → reservierter Platz vor dem Laden.
+- **Performance erledigt:** Bilder → WebP (26 MB → 0,9 MB), Hero-Video H.264 CRF 30 + faststart ohne Audio (7,9 MB → 0,6 MB).
 
 ---
 
