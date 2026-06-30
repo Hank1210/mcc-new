@@ -59,8 +59,8 @@ mcc-new/
 │   └── self-publishing/index.html
 ├── automation/index.html
 ├── team/index.html
-├── impressum/index.html                ← Inhalt NIEMALS ändern (rechtlich)
-├── datenschutz/index.html              ← Inhalt NIEMALS ändern (rechtlich)
+├── impressum/index.html                ← Rechtstext nur aus offizieller Quelle ändern (nicht frei umformulieren)
+├── datenschutz/index.html              ← Rechtstext = Quelle Datenschutzerklärung.docx (1:1); nur aus offizieller Quelle ändern
 ├── en/                                 ← EN-Mirror, identische Layouts
 │   ├── index.html
 │   ├── services/index.html
@@ -83,16 +83,20 @@ mcc-new/
 
 ### Jede Seite enthält
 1. `<link>` auf Poppins Google Font
-2. `<link>` auf `/assets/css/style.css`
+2. `<link>` auf `style.css` (relativer Pfad je Verzeichnistiefe, z. B. `../assets/css/style.css`)
 3. Seitenspezifische `<style>`-Block mit page-level Overrides (inkl. `.label`-Definition)
 4. Nav (desktop) + `nav__mobile` (mobile) + Content-Sektionen + Footer
-5. `<script src="/assets/js/main.js">`
+5. `<script src="...assets/js/main.js">` (relativ)
 
 ### Navigation (DE)
 ```
 Über uns | Leistungen | Automation | Team  +  DE | EN
 ```
 Aktive Seite erhält `nav__link--active`. Auf der Homepage bleibt die Nav **immer weiß** (kein scroll-transparenz). CSS-Spezifität beachten: `.nav .nav__link--active` (0,2,0) muss nach `.nav .nav__link` stehen.
+
+**Footer-Nav:** beginnt mit „Über uns" / „About us" (→ Startseite), danach Leistungen/Automation/Team/Impressum/Datenschutz. In allen 14 Seiten gespiegelt.
+
+**Legal-Seiten ohne Hero (Impressum/Datenschutz/EN-Pendants):** `main.js` entfernt bei `scrollY ≤ 60` die Klasse `nav--scrolled`, sonst fallen die Nav-Links auf weiß (`.nav__link` default) zurück → unsichtbar auf weißem BG. Deshalb tragen dort **alle** Desktop-Nav-Links inline `style="color:var(--gray);"` (inkl. „Über uns").
 
 ### Homepage-spezifische Layouts (`index.html`)
 
@@ -101,11 +105,11 @@ Aktive Seite erhält `nav__link--active`. Auf der Homepage bleibt die Nav **imme
 | `.home-hero` + `.home-hero__bg` (video) | 72vh Hero mit Video-Hintergrund (opacity 0.62) |
 | `.home-hero__tag` | Eyebrow mit `::before`-Linie |
 | `.intro-strip` | Blauer Banner unter Hero mit Kompetenzfeldern |
-| `.mission-head` + `.pillars-grid` / `.pillar-col` | 3-spaltige Mission-Karten mit Ghost-Zahlen (4.5rem, opacity 0.06) |
+| `.mission-head` + `.pillars-grid` / `.pillar-col` | 3-spaltige Mission-Karten mit Ghost-Zahlen (4.5rem, opacity 0.06). **Mobil (≤860px):** 1-spaltig, Inhalt zentriert, Bild mittig 150px |
 | `.pillar-col:hover` | Hover: hellgrauer BG + blauer Top-Balken via `::after` |
 | `.mc-split` | Dunkle Section: Text links + Bild rechts |
 | `.diff-grid` | 3×2 Grid „Was uns auszeichnet" |
-| `.team-list` | 2-spaltige Team-Karten (400px Bildhöhe) |
+| `.team-list` / `.team-card` | Horizontale Team-Karten: `grid-template-columns: 220px 1fr` (Bild links 220px / Text rechts), Karten untereinander. **Mobil (≤600px):** gestapelt (Bild oben, 260px hoch). Keyword-Pillen `.team-card__tag` im blauen Stil der Team-Seite (`.tag`) |
 
 ### Unterseiten-Layouts
 
@@ -124,6 +128,7 @@ Aktive Seite erhält `nav__link--active`. Auf der Homepage bleibt die Nav **imme
 |---|---|
 | `Logo-MCC-Tagline-Final.png` | Nav + Footer, alle Seiten |
 | `MCC_Website_512-512.png` | Favicon |
+| `Kontakt-MCC.png` | Kontaktdaten als Bild (Spam-Schutz): Impressum + Datenschutz „verantwortliche Stelle" (DE + EN) |
 | `Image-Together.png` | Homepage mc-split (DE + EN) |
 | `Image_Finger-N.png` | Hero: Team (DE + EN) |
 | `Image_KI_1280x630.png` | Hero: Automation |
