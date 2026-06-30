@@ -91,7 +91,10 @@ mcc-new/
 4. **SEO-Block** (vor `</head>`, siehe Abschnitt „SEO"): canonical, hreflang (de/en/x-default), Open Graph + Twitter Cards; Startseiten + Team-Seiten zusätzlich JSON-LD
 5. Seitenspezifische `<style>`-Block mit page-level Overrides (inkl. `.label`-Definition)
 6. Nav (desktop) + `nav__mobile` (mobile) + Content-Sektionen + Footer
-7. `<script src="...assets/js/main.js">` (relativ)
+7. `<script src="...assets/js/main.js">` (relativ; 404.html ausgenommen)
+8. `<script src="...assets/js/consent.js" defer>` — Cookie-Consent + Google Analytics
+
+**Google Analytics (GA4 `G-YJ3FMM6R6Y`):** consent-gated über `assets/js/consent.js`. GA lädt **erst nach aktiver Einwilligung** über das Cookie-Banner (DSGVO-konform, passt zur Datenschutzerklärung). Auswahl in `localStorage` (`mcc-consent` = `granted`/`denied`). Banner ist zweisprachig (per `<html lang>`), Styles in `style.css` (`.cookie-consent*`). Mess-ID nur in `consent.js`.
 
 ### Navigation (DE)
 ```
