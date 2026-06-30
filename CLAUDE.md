@@ -160,8 +160,9 @@ Aktive Seite erhält `nav__link--active`. Auf der Homepage bleibt die Nav **imme
 
 ## Regeln
 
-- **Alle Asset-Pfade absolut:** `/assets/images/...` — kein `../`
-- **Neue Bilder:** aus `MCC-Redesign/AssetsHeader/` nach `assets/images/` kopieren, dann referenzieren
+- **Alle Pfade RELATIV** (kein führender `/`): Asset- und interne Link-Pfade relativ zur jeweiligen Datei. Präfix nach Verzeichnistiefe: Root (`index.html`) → `assets/...`, 1 tief (`leistungen/`) → `../assets/...`, 2 tief (`en/services/`) → `../../assets/...`, 3 tief (`en/services/self-publishing/`) → `../../../assets/...`. Interne Links zeigen auf die konkrete Datei inkl. `index.html` (z. B. `../leistungen/index.html`).
+  - **Grund:** Absolute Pfade (`/assets/...`) brechen beim direkten Öffnen via `file://` (Browser-Doppelklick) und bei Strato-Upload in einen Unterordner. Relative Pfade funktionieren überall: Doppelklick, lokaler Server und Strato (egal welcher Ordner).
+- **Neue Bilder:** aus `MCC-Redesign/AssetsHeader/` nach `assets/images/` kopieren, dann mit korrektem `../`-Präfix referenzieren
 - **Globale Nav-Änderungen** müssen in allen 14 HTML-Dateien durchgeführt werden (kein Templating)
 - **EN-Seiten** sind strukturell identisch mit DE — gleiche CSS-Klassen, gleiche Layouts, nur Texte übersetzt
 - **Self-Publishing** ist nicht in der Hauptnavigation — nur via Leistungen-Seite erreichbar
