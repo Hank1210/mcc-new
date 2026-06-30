@@ -31,6 +31,7 @@
       --shadow:0 18px 50px rgba(15,22,36,0.10);
       --max-w:1080px;
       --gutter:1.5rem;
+      --nav-h:68px;
     }
 
     *{ box-sizing:border-box; }
@@ -53,23 +54,32 @@
       padding-inline:var(--gutter);
     }
 
-    /* ── NAV (logo + language switch only) ── */
+    /* ── NAV: transparent over the hero, turns white on scroll ── */
     .nav{
-      position:sticky;
-      top:0;
+      position:fixed;
+      top:0; left:0; right:0;
       z-index:50;
-      background:rgba(255,255,255,0.98);
-      border-bottom:1px solid var(--gray-border);
+      height:var(--nav-h);
+      background:transparent;
+      border-bottom:1px solid transparent;
+      transition:background .25s ease, box-shadow .25s ease, border-color .25s ease;
     }
     .nav__inner{
+      height:100%;
       max-width:var(--max-w);
       margin-inline:auto;
-      padding:0.85rem var(--gutter);
+      padding-inline:var(--gutter);
       display:flex;
       align-items:center;
       justify-content:space-between;
     }
-    .nav__logo{ height:34px; width:auto; display:block; }
+    .nav__logo{
+      height:44px;
+      width:auto;
+      display:block;
+      filter:brightness(0) invert(1);
+      transition:filter .25s ease;
+    }
     .nav__lang{
       display:flex;
       align-items:center;
@@ -78,10 +88,20 @@
       font-weight:600;
       letter-spacing:0.04em;
     }
-    .nav__lang a{ color:var(--gray-light); }
-    .nav__lang a.active{ color:var(--blue); }
+    .nav__lang a{ color:rgba(255,255,255,0.78); }
+    .nav__lang a.active{ color:#fff; }
     .nav__lang a:hover{ color:var(--blue-light); }
-    .nav__lang .sep{ color:var(--gray-border); }
+    .nav__lang .sep{ color:rgba(255,255,255,0.35); }
+
+    .nav--scrolled{
+      background:rgba(255,255,255,0.98);
+      border-bottom-color:var(--gray-border);
+    }
+    .nav--scrolled .nav__logo{ filter:none; }
+    .nav--scrolled .nav__lang a{ color:var(--gray-light); }
+    .nav--scrolled .nav__lang a.active{ color:var(--blue); }
+    .nav--scrolled .nav__lang a:hover{ color:var(--blue-light); }
+    .nav--scrolled .nav__lang .sep{ color:var(--gray-border); }
 
     /* ── Label / Eyebrow ── */
     .label{
@@ -105,7 +125,7 @@
     }
     .label--light{ color:var(--blue-light); }
 
-    /* ── HERO ── */
+    /* ── HERO (image extends under the nav) ── */
     .hero{
       position:relative;
       overflow:hidden;
@@ -132,7 +152,7 @@
       z-index:2;
       max-width:var(--max-w);
       margin-inline:auto;
-      padding:3.5rem var(--gutter);
+      padding:calc(var(--nav-h) + 2.5rem) var(--gutter) 3.5rem;
     }
     .hero__title{
       font-size:clamp(2.2rem, 5vw, 3.4rem);
@@ -271,18 +291,18 @@
 
     @media (max-width:760px){
       .info-grid{ grid-template-columns:1fr; }
-      .hero__inner{ padding:2.5rem var(--gutter); }
+      .hero__inner{ padding:calc(var(--nav-h) + 1.5rem) var(--gutter) 2.5rem; }
       .links a{ flex-wrap:wrap; }
-      .nav__logo{ height:30px; }
+      .nav__logo{ height:38px; }
     }
   </style>
 </head>
 
 <body>
-  <!-- NAV: logo + language switch only, no further navigation -->
-  <nav class="nav">
+  <!-- NAV: logo + language switch only; transparent, turns white on scroll -->
+  <nav class="nav" id="nav">
     <div class="nav__inner">
-      <img src="../Logo-MCC-Tagline-Final.png" alt="MultiChannelConsult" class="nav__logo" />
+      <img src="https://multichannelconsult.de/assets/images/Logo-MCC-Tagline-Final.webp" alt="MultiChannelConsult" class="nav__logo" />
       <div class="nav__lang">
         <a href="../index.html">DE</a>
         <span class="sep">|</span>
@@ -369,5 +389,14 @@
       <div class="footer__accent"></div>
     </div>
   </footer>
+
+  <script>
+    (function(){
+      var nav = document.getElementById('nav');
+      function onScroll(){ nav.classList.toggle('nav--scrolled', window.scrollY > 60); }
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive:true });
+    })();
+  </script>
 </body>
 </html>
