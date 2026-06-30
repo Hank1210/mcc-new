@@ -188,7 +188,7 @@ Aktive Seite erhält `nav__link--active`. Auf der Homepage bleibt die Nav **imme
 - **`sitemap.xml`:** 14 URLs mit `xhtml:link`-hreflang-Alternates.
 - **Bei neuer Seite / URL-Änderung:** canonical + hreflang-Paar im `<head>` setzen UND `sitemap.xml` ergänzen.
 - **`.htaccess` nur ins Domain-Root** hochladen, **nicht** nach `/lab/…` (Redirects + `ErrorDocument 404 /index.html` passen nur fürs Root).
-- **Offene SEO-Punkte (TODO):** Performance (Video 7,9 MB + Bilder 26 MB → WebP/Komprimierung), echte 404-Seite statt Soft-404, `width`/`height` an `<img>` gegen CLS.
+- **Offene SEO-Punkte (TODO):** ~~Bilder → WebP~~ ✅ erledigt (26 MB → 0,9 MB). Noch offen: **Video 7,9 MB** komprimieren (braucht ffmpeg, nicht installiert), echte 404-Seite statt Soft-404, `width`/`height` an `<img>` gegen CLS.
 
 ---
 
@@ -196,7 +196,8 @@ Aktive Seite erhält `nav__link--active`. Auf der Homepage bleibt die Nav **imme
 
 - **Alle Pfade RELATIV** (kein führender `/`): Asset- und interne Link-Pfade relativ zur jeweiligen Datei. Präfix nach Verzeichnistiefe: Root (`index.html`) → `assets/...`, 1 tief (`leistungen/`) → `../assets/...`, 2 tief (`en/services/`) → `../../assets/...`, 3 tief (`en/services/self-publishing/`) → `../../../assets/...`. Interne Links zeigen auf die konkrete Datei inkl. `index.html` (z. B. `../leistungen/index.html`).
   - **Grund:** Absolute Pfade (`/assets/...`) brechen beim direkten Öffnen via `file://` (Browser-Doppelklick) und bei Strato-Upload in einen Unterordner. Relative Pfade funktionieren überall: Doppelklick, lokaler Server und Strato (egal welcher Ordner).
-- **Neue Bilder:** aus `MCC-Redesign/AssetsHeader/` nach `assets/images/` kopieren, dann mit korrektem `../`-Präfix referenzieren
+- **Bildformat WebP:** Alle `<img>` referenzieren `.webp` (per Pillow erzeugt, auf Anzeigegröße herunterskaliert; ~96 % kleiner als die PNG-Originale). **Ausnahmen bleiben PNG:** Favicon (`MCC_Website_512-512.png`, via `href`), OG-/JSON-LD-Bilder (`Image_Transformation_1280x630.png`, `Image_KI_1280x630.png`, `Logo-MCC-Tagline-Final.png`) — für Social-Scraper-Kompatibilität.
+- **Neue Bilder:** aus `MCC-Redesign/AssetsHeader/` nach `assets/images/` kopieren, zu `.webp` konvertieren (Pillow, `quality=82`, große Grafiken downscalen), dann mit korrektem `../`-Präfix als `.webp` referenzieren
 - **Globale Nav-Änderungen** müssen in allen 14 HTML-Dateien durchgeführt werden (kein Templating)
 - **EN-Seiten** sind strukturell identisch mit DE — gleiche CSS-Klassen, gleiche Layouts, nur Texte übersetzt
 - **Self-Publishing** ist nicht in der Hauptnavigation — nur via Leistungen-Seite erreichbar
