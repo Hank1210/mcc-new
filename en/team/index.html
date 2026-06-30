@@ -6,7 +6,71 @@
   <title>Team – MultiChannelConsult</title>
   <meta name="description" content="The MultiChannelConsult team: Alexander Daniel Euler and Frank Rüdiger Euler – experienced consultants for digital transformation and multichannel strategies.">
   <link rel="icon" type="image/png" href="/assets/images/MCC_Website_512-512.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/style.css">
+  <style>
+    .hero__bg { opacity: 0.92; }
+    .hero__overlay {
+      background: linear-gradient(105deg,
+        rgba(15,22,36,0.82) 0%,
+        rgba(15,22,36,0.45) 45%,
+        rgba(15,22,36,0.05) 100%);
+    }
+
+    .label {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--blue); margin-bottom: 0.875rem;
+    }
+    .label::before {
+      content: ''; display: block; width: 20px; height: 2px;
+      background: var(--blue-light); border-radius: 2px;
+    }
+
+    .team-intro {
+      max-width: 640px; font-size: 1.05rem; color: var(--gray);
+      line-height: 1.75; margin: 0 auto 3.5rem; text-align: center;
+    }
+
+    .team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 3rem; }
+
+    .team-card {
+      border: 1px solid var(--gray-border); border-radius: var(--radius);
+      overflow: hidden; background: var(--white); display: flex; flex-direction: column;
+    }
+    .team-card__img { width: 100%; height: auto; display: block; }
+    .team-card__body { padding: 1.75rem; display: flex; flex-direction: column; flex: 1; }
+    .team-card__name { font-size: 1.1rem; font-weight: 700; color: var(--ink); margin-bottom: 0.2rem; }
+    .team-card__role { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); margin-bottom: 1.1rem; }
+    .team-card__bio { font-size: 0.875rem; color: var(--gray); line-height: 1.75; margin-bottom: 0.75rem; }
+
+    .team-card__schwerpunkte { margin: 0.25rem 0 1.1rem; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+    .team-card__schwerpunkte li { font-size: 0.845rem; color: var(--gray); line-height: 1.6; padding-left: 1rem; position: relative; }
+    .team-card__schwerpunkte li::before { content: '·'; color: var(--blue-light); font-weight: 700; font-size: 1.2rem; position: absolute; left: 0; top: -0.05em; }
+    .team-card__schwerpunkte strong { color: var(--ink); }
+
+    .team-card__tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.75rem 0 1.25rem; }
+    .tag { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.04em; color: var(--blue); background: rgba(25,25,156,0.06); border: 1px solid rgba(25,25,156,0.15); border-radius: 100px; padding: 0.25rem 0.7rem; }
+
+    .team-card__links { margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--gray-border); display: flex; flex-direction: column; gap: 0.5rem; }
+    .team-card__mail,
+    .team-card__linkedin { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; color: var(--gray-light); transition: color 0.2s; }
+    .team-card__mail:hover,
+    .team-card__linkedin:hover { color: var(--blue); }
+    .team-card__mail svg,
+    .team-card__linkedin svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+
+    .network-block {
+      background: var(--bg); border: 1px solid var(--gray-border);
+      border-radius: var(--radius); padding: 2rem 2.5rem;
+    }
+    .network-block h3 { font-size: 1.05rem; color: var(--ink); margin-bottom: 0.6rem; }
+    .network-block p { font-size: 0.875rem; color: var(--gray); line-height: 1.75; max-width: 68ch; margin: 0; }
+
+    @media (max-width: 860px) { .team-grid { grid-template-columns: 1fr; } }
+  </style>
 </head>
 <body>
 
@@ -14,6 +78,7 @@
     <div class="nav__inner">
       <a href="/en/"><img src="/assets/images/Logo-MCC-Tagline-Final.png" alt="MultiChannelConsult" class="nav__logo"></a>
       <div class="nav__links">
+        <a href="/en/" class="nav__link">About us</a>
         <a href="/en/services/" class="nav__link">Services</a>
         <a href="/en/automation/" class="nav__link">Automation</a>
         <a href="/en/team/" class="nav__link nav__link--active">Team</a>
@@ -26,6 +91,7 @@
   </nav>
 
   <div class="nav__mobile">
+    <a href="/en/" class="nav__link">About us</a>
     <a href="/en/services/" class="nav__link">Services</a>
     <a href="/en/automation/" class="nav__link">Automation</a>
     <a href="/en/team/" class="nav__link nav__link--active">Team</a>
@@ -35,7 +101,7 @@
   </div>
 
   <section class="hero hero--sub">
-    <img src="/assets/images/Image_Transformation_1280x630.png" alt="" class="hero__bg">
+    <img src="/assets/images/Image_Finger-N.png" alt="" class="hero__bg">
     <div class="hero__overlay"></div>
     <div class="hero__content">
       <span class="hero__eyebrow">Who we are</span>
@@ -46,14 +112,34 @@
 
   <section class="section">
     <div class="container">
+
+      <div class="fade-up" style="text-align:center; margin-bottom:3rem;">
+        <div class="label" style="justify-content:center;">Who we are</div>
+        <p class="team-intro">We are a team of independent consultants and source according to project requirements. We have a large network of highly experienced specialists.</p>
+      </div>
+
       <div class="team-grid">
+
         <div class="team-card fade-up">
           <img src="/assets/images/Daniel_Euler_Portrait_02a.jpg" alt="Alexander Daniel Euler" class="team-card__img">
           <div class="team-card__body">
             <div class="team-card__name">Alexander Daniel Euler</div>
             <div class="team-card__role">Managing Partner</div>
-            <p class="team-card__bio">With over 25 years of leadership experience in digital transformation, multichannel marketing and sales, Alexander Daniel Euler has deep expertise in mid-market retail.</p>
-            <p class="team-card__bio" style="margin-top:0.5rem;">His focus is on building data-driven companies with clear KPI orientation – and restructuring organisations into high-performing multichannel units.</p>
+
+            <p class="team-card__bio">Alexander Daniel Euler brings more than 25 years of leadership experience in digital transformation, multichannel marketing and sales. As Managing Director and division head, he has successfully guided companies with billion-euro turnovers through transformation processes and led teams of over 100 employees.</p>
+
+            <p class="team-card__bio" style="font-weight:600; color:var(--ink); margin-bottom:0.4rem;">Focus areas:</p>
+            <ul class="team-card__schwerpunkte">
+              <li><strong>Digital transformation in retail</strong> (focus: mid-market)</li>
+              <li><strong>Strategy, organisation and technology</strong></li>
+              <li><strong>Building efficient digital business models</strong></li>
+              <li><strong>Transforming organisations into data-driven companies</strong> with clear KPI orientation</li>
+              <li><strong>Restructuring organisations</strong> into high-performing multichannel units</li>
+              <li><strong>Managing the change process</strong></li>
+            </ul>
+
+            <p class="team-card__bio">Clients benefit from his experience in implementing complex transformation projects – from developing a clear multichannel strategy to operational execution. With his hands-on, solution-oriented approach, he helps companies turn challenges into opportunities and consistently exploit growth potential.</p>
+
             <div class="team-card__tags">
               <span class="tag">Digital Transformation</span>
               <span class="tag">Multichannel Strategy</span>
@@ -61,10 +147,17 @@
               <span class="tag">E-Commerce</span>
               <span class="tag">KPI Management</span>
             </div>
-            <a href="mailto:daniel.euler@multichannelconsult.de" class="team-card__mail">
-              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              daniel.euler@multichannelconsult.de
-            </a>
+
+            <div class="team-card__links">
+              <a href="mailto:daniel.euler@multichannelconsult.de" class="team-card__mail">
+                <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                daniel.euler@multichannelconsult.de
+              </a>
+              <a href="https://linkedin.com/in/daniel-alexander-euler" target="_blank" rel="noopener" class="team-card__linkedin">
+                <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                linkedin.com/in/daniel-alexander-euler
+              </a>
+            </div>
           </div>
         </div>
 
@@ -73,8 +166,18 @@
           <div class="team-card__body">
             <div class="team-card__name">Frank Rüdiger Euler</div>
             <div class="team-card__role">Partner</div>
-            <p class="team-card__bio">Frank Rüdiger Euler brings proven expertise in implementing digital transformations and scaling digital business models – with international experience across technology, finance and consumer goods.</p>
-            <p class="team-card__bio" style="margin-top:0.5rem;">His specialisms include AI-powered process automation, marketing innovation and strategic business development in multichannel environments.</p>
+
+            <p class="team-card__bio">Frank Rüdiger Euler is an experienced leader with proven expertise in implementing digital transformations, scaling digital business models and increasing operational efficiency. He brings extensive experience in international technology, finance and consumer goods companies and has successfully led numerous projects to increase revenue in digital environments. His focus areas include:</p>
+
+            <ul class="team-card__schwerpunkte">
+              <li><strong>Marketing innovation &amp; platform growth</strong></li>
+              <li><strong>AI-powered process automation</strong></li>
+              <li><strong>Scaling digital sales channels</strong></li>
+              <li><strong>Strategic business development</strong> in multichannel environments</li>
+            </ul>
+
+            <p class="team-card__bio"><strong>Special topics:</strong> Book consulting (Self-Publishing) and book marketing</p>
+
             <div class="team-card__tags">
               <span class="tag">AI Automation</span>
               <span class="tag">Marketing Innovation</span>
@@ -82,18 +185,27 @@
               <span class="tag">Self-Publishing</span>
               <span class="tag">Book Marketing</span>
             </div>
-            <a href="mailto:eulerfra@multichannelconsult.de" class="team-card__mail">
-              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              eulerfra@multichannelconsult.de
-            </a>
+
+            <div class="team-card__links">
+              <a href="mailto:eulerfra@multichannelconsult.de" class="team-card__mail">
+                <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                eulerfra@multichannelconsult.de
+              </a>
+              <a href="https://www.linkedin.com/in/eulerfra" target="_blank" rel="noopener" class="team-card__linkedin">
+                <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                linkedin.com/in/eulerfra
+              </a>
+            </div>
           </div>
         </div>
+
       </div>
 
       <div class="network-block fade-up">
         <h3>Our Specialist Network</h3>
         <p>MultiChannelConsult works with a proven network of independent consultants and subject matter specialists. Depending on project requirements, we assemble the right team from experienced freelancers – for exactly the right expertise at exactly the right time.</p>
       </div>
+
     </div>
   </section>
 

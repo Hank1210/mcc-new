@@ -3,17 +3,228 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Self-Publishing – MultiChannelConsult</title>
+  <title>Self-Publishing & Buch-Veröffentlichung – MultiChannelConsult</title>
   <meta name="description" content="Ihr Weg zum eigenen Buch: MultiChannelConsult begleitet Sie beim Self-Publishing über Amazon KDP und andere Verlagsmodelle – von der Beratung bis zur Vermarktung.">
   <link rel="icon" type="image/png" href="/assets/images/MCC_Website_512-512.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/style.css">
+  <style>
+    /* ── Self-Publishing-spezifische Stile ── */
+
+    /* Hero: lebendige Farben */
+    .hero__bg { opacity: 0.92; }
+    .hero__overlay {
+      background: linear-gradient(
+        105deg,
+        rgba(15,22,36,0.82) 0%,
+        rgba(15,22,36,0.45) 45%,
+        rgba(15,22,36,0.05) 100%
+      );
+    }
+
+    /* Label */
+    .label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 0.875rem;
+    }
+    .label::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--blue-light);
+      border-radius: 2px;
+    }
+
+    /* ── VERÖFFENTLICHUNGSWEGE GRID ── */
+    .pub-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--gray-border);
+      border: 1px solid var(--gray-border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-top: 2.5rem;
+    }
+    .pub-cell {
+      background: var(--white);
+      padding: 1.75rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.875rem;
+    }
+    .pub-cell:hover { background: var(--bg); }
+    .pub-cell__img {
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+    .pub-cell__title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .pub-cell__text {
+      font-size: 0.82rem;
+      color: var(--gray-light);
+      line-height: 1.65;
+      flex: 1;
+    }
+    .pub-cell__note {
+      font-size: 0.72rem;
+      color: var(--blue);
+      font-weight: 600;
+    }
+
+    /* ── SELF-PUBLISHING RUBRIK ── */
+    .sp-section {
+      background: var(--bg);
+    }
+    .sp-intro {
+      font-size: 1rem;
+      color: var(--gray);
+      line-height: 1.75;
+      max-width: 72ch;
+      margin-bottom: 1.5rem;
+    }
+    .sp-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .sp-box {
+      background: var(--white);
+      border: 1px solid var(--gray-border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+    }
+    .sp-box__title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 0.875rem;
+    }
+    .sp-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .sp-list li {
+      font-size: 0.845rem;
+      color: var(--gray);
+      line-height: 1.6;
+      padding-left: 1rem;
+      position: relative;
+    }
+    .sp-list li::before {
+      content: '·';
+      color: var(--blue-light);
+      font-weight: 700;
+      font-size: 1.2rem;
+      position: absolute;
+      left: 0;
+      top: -0.05em;
+    }
+    .sp-list--challenge li::before { color: var(--gray-light); }
+
+    /* ── LEISTUNGEN (Icon + Text nebeneinander) ── */
+    .svc-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border: 1px solid var(--gray-border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-top: 2.5rem;
+    }
+    .svc-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5rem;
+      padding: 1.5rem 2rem;
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-border);
+      transition: background 0.2s;
+    }
+    .svc-row:last-child { border-bottom: none; }
+    .svc-row:hover { background: var(--bg); }
+    .svc-row__icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(25,25,156,0.06);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+    .svc-row__icon svg {
+      width: 22px; height: 22px;
+      stroke: var(--blue);
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .svc-row__title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 0.3rem;
+    }
+    .svc-row__text {
+      font-size: 0.845rem;
+      color: var(--gray-light);
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    /* Hinweis-Box */
+    .notice-box {
+      background: rgba(55,181,255,0.06);
+      border: 1px solid rgba(55,181,255,0.25);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.75rem;
+      margin-top: 2rem;
+      font-size: 0.845rem;
+      color: var(--gray-light);
+      line-height: 1.65;
+    }
+    .notice-box strong { color: var(--gray); }
+
+    @media (max-width: 1000px) {
+      .pub-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .pub-grid { grid-template-columns: 1fr; }
+      .sp-split { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
 
   <nav class="nav" id="nav">
     <div class="nav__inner">
       <a href="/"><img src="/assets/images/Logo-MCC-Tagline-Final.png" alt="MultiChannelConsult" class="nav__logo"></a>
-      <div class="nav__links">
+      <div class="nav__links">    <a href="/" class="nav__link">Über uns</a>
         <a href="/leistungen/" class="nav__link nav__link--active">Leistungen</a>
         <a href="/automation/" class="nav__link">Automation</a>
         <a href="/team/" class="nav__link">Team</a>
@@ -30,6 +241,7 @@
   </nav>
 
   <div class="nav__mobile">
+    <a href="/" class="nav__link">Über uns</a>
     <a href="/leistungen/" class="nav__link nav__link--active">Leistungen</a>
     <a href="/automation/" class="nav__link">Automation</a>
     <a href="/team/" class="nav__link">Team</a>
@@ -42,18 +254,11 @@
 
   <!-- HERO -->
   <section class="hero hero--sub">
-    <img src="/assets/images/Image_Ausrufe_1280x630.png" alt="" class="hero__bg">
+    <img src="/assets/images/Image_Buch_mod.png" alt="" class="hero__bg">
     <div class="hero__overlay"></div>
     <div class="hero__content">
-      <div class="breadcrumb">
-        <a href="/">Home</a>
-        <span class="sep">›</span>
-        <a href="/leistungen/">Leistungen</a>
-        <span class="sep">›</span>
-        <span>Self-Publishing</span>
-      </div>
-      <span class="hero__eyebrow" style="margin-top:1rem;">Sonderleistung</span>
-      <h1 class="hero__title">Ihr Weg zum eigenen <span>Buch</span></h1>
+      <span class="hero__eyebrow">Sonderleistung</span>
+      <h1 class="hero__title">Ihr Weg zum eigenen Buch</h1>
       <p class="hero__subtitle">Von der ersten Idee bis zur Veröffentlichung – wir begleiten Sie durch den gesamten Self-Publishing-Prozess.</p>
     </div>
   </section>
@@ -61,125 +266,146 @@
   <!-- INTRO -->
   <section class="section">
     <div class="container">
-      <div class="fade-up" style="max-width:720px;">
-        <span class="section-label">Buch-Veröffentlichung</span>
-        <div class="divider"></div>
-        <h2>Mehr als ein Manuskript</h2>
-        <p>Self-Publishing eröffnet Autoren und Unternehmern vollständige kreative Kontrolle über ihr Werk – Cover, Inhalt, Preis und Vertrieb. Wir begleiten Sie auf diesem Weg mit Beratung, Coaching und Vermarktungsstrategie.</p>
-        <p>Unsere Beratung umfasst alle gängigen Veröffentlichungswege – von Amazon KDP bis zu klassischen Verlagsmodellen – und hilft Ihnen, die richtige Wahl für Ihr Projekt zu treffen.</p>
+      <div class="fade-up">
+        <div class="label">Buch-Veröffentlichung</div>
+        <h2>Autoren haben heute sehr viele verschiedene Möglichkeiten, ihr Werk an die Leserschaft zu bringen</h2>
+      </div>
+
+      <!-- VERÖFFENTLICHUNGSWEGE -->
+      <div class="pub-grid">
+
+        <div class="pub-cell fade-up">
+          <img src="/assets/images/MCC_Buch-Verlag-n.png" alt="Klassischer Verlag" class="pub-cell__img">
+          <div class="pub-cell__title">Klassischer Verlag</div>
+          <p class="pub-cell__text">Der Verlag übernimmt Lektorat, Covergestaltung, Marketing und Vertrieb. Der Autor gibt jedoch Rechte ab und erhält meist nur einen Teil der Erlöse (Tantiemen). Der Zugang ist selektiv – Verlage veröffentlichen nur wenige Manuskripte.</p>
+        </div>
+
+        <div class="pub-cell fade-up">
+          <img src="/assets/images/MCC_Buch_Agenten-n.png" alt="Literaturagenten" class="pub-cell__img">
+          <div class="pub-cell__title">Literaturagenten</div>
+          <p class="pub-cell__text">Agenten vermitteln Manuskripte an Verlage. Sie erhöhen die Chancen auf eine Verlagsveröffentlichung, nehmen aber Provisionen und binden den Autor in längere Prozesse ein.</p>
+        </div>
+
+        <div class="pub-cell fade-up">
+          <img src="/assets/images/MCC_Buch_GH.png" alt="Großhandel" class="pub-cell__img">
+          <div class="pub-cell__title">Großhandel</div>
+          <p class="pub-cell__text">Der Vertrieb erfolgt über Zwischenhändler, die Bücher in großen Mengen einkaufen und an den stationären Buchhandel liefern. Eignet sich für höhere Auflagen und Titel mit stabilem Absatz – der Großhandel nimmt nicht alle Titel an.</p>
+        </div>
+
+        <div class="pub-cell fade-up">
+          <img src="/assets/images/MCC_Buch_Plus.png" alt="Distributoren & Aggregatoren" class="pub-cell__img">
+          <div class="pub-cell__title">Distributoren &amp; Aggregatoren</div>
+          <p class="pub-cell__text">Mittler zwischen Autor und Plattformen. Sie übernehmen oft den Vertrieb an mehrere Shops gleichzeitig und bieten zusätzliche Services wie ISBN-Vergabe, Abrechnung oder Marketingunterstützung.</p>
+        </div>
+
+        <div class="pub-cell fade-up">
+          <img src="/assets/images/MCC_Buch_Seller.png" alt="Amazon Seller Central" class="pub-cell__img">
+          <div class="pub-cell__title">Amazon Seller Central</div>
+          <p class="pub-cell__text">Bücher können wie jedes andere Produkt über das Amazon-Marktplatzmodell verkauft werden. Der Autor kümmert sich selbst um Produktion, Lagerung, Versand und Marketing – nur für gedruckte Bücher. Der Aufwand kann sehr hoch sein.</p>
+          <span class="pub-cell__note">Nur Amazon</span>
+        </div>
+
+        <div class="pub-cell fade-up">
+          <img src="/assets/images/MCC_Buch_Advantage-n.png" alt="Amazon Advantage" class="pub-cell__img">
+          <div class="pub-cell__title">Amazon Advantage</div>
+          <p class="pub-cell__text">Programm, bei dem Amazon gedruckte Bücher einkauft und vertreibt (Kommissionsgeschäft). Der Autor liefert, Amazon übernimmt die Distribution. Eher für etablierte Anbieter oder Sonderauflagen geeignet.</p>
+          <span class="pub-cell__note">Nur Amazon · Eingeschränkt verfügbar</span>
+        </div>
+
+        <div class="pub-cell fade-up">
+          <img src="/assets/images/MCC_Buch_KDP.png" alt="Self-Publishing via KDP" class="pub-cell__img">
+          <div class="pub-cell__title">Self-Publishing via KDP</div>
+          <p class="pub-cell__text">Mit Kindle Direct Publishing (KDP) von Amazon können Autoren eBooks und Print-on-Demand-Titel weltweit veröffentlichen – ohne Einstiegskosten. Weitere Angebote wie BoD oder Tolino Media ergänzen den deutschen Markt.</p>
+          <span class="pub-cell__note">Unsere Empfehlung zum Einstieg</span>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- BOOK GRID -->
-  <section class="section section--alt">
+  <!-- SELF-PUBLISHING RUBRIK -->
+  <section class="section sp-section">
     <div class="container">
       <div class="fade-up">
-        <span class="section-label">Referenzen</span>
-        <div class="divider"></div>
-        <h2>Veröffentlichte Werke</h2>
+        <div class="label">Self-Publishing</div>
+        <h2>Es gibt viele Optionen ein Buch zu veröffentlichen</h2>
+        <p class="sp-intro">Unsere Empfehlung: Einfach und kostengünstig starten und dann weitere Optionen ergänzen.</p>
+        <p class="sp-intro">Self-Publishing bedeutet, dass Sie Ihr Buch unabhängig von einem klassischen Verlag veröffentlichen – in Eigenregie, aber mit voller Kontrolle. Mit z.B. <strong>Kindle Direct Publishing (KDP)</strong> von Amazon können Autoren sowohl eBooks als auch Print-on-Demand-Titel weltweit veröffentlichen – ohne Einstiegskosten. Und es gibt weitere sehr gute Angebote wie BoD, Tolino Media usw. für den deutschen Markt. Einfach vergleichen.</p>
+        <p class="sp-intro">Self-Publishing ist die unternehmerische Alternative für Autoren, die nicht auf die Entscheidung klassischer Verlage warten wollen, sondern ihr Werk aktiv im Markt platzieren möchten. Mit der richtigen Strategie – von Manuskript bis Marketing – kann Self-Publishing zum echten Geschäft werden.</p>
       </div>
-      <div class="books-grid">
-        <div class="book-item fade-up"><img src="/assets/images/MCC_Buch_KDP.png" alt="Buch KDP"></div>
-        <div class="book-item fade-up"><img src="/assets/images/MCC_Buch_GH.png" alt="Buch GH"></div>
-        <div class="book-item fade-up"><img src="/assets/images/MCC_Buch_Plus.png" alt="Buch Plus"></div>
-        <div class="book-item fade-up"><img src="/assets/images/MCC_Buch_Seller.png" alt="Buch Seller"></div>
-        <div class="book-item fade-up"><img src="/assets/images/MCC_Buch_Advantage-n.png" alt="Buch Advantage"></div>
-        <div class="book-item fade-up"><img src="/assets/images/MCC_Buch_Agenten-n.png" alt="Buch Agenten"></div>
-        <div class="book-item fade-up"><img src="/assets/images/MCC_Buch-Verlag-n.png" alt="Buch Verlag"></div>
+
+      <div class="sp-split">
+        <div class="sp-box fade-up">
+          <div class="sp-box__title">Vorteile</div>
+          <ul class="sp-list">
+            <li>100&nbsp;% kreative Freiheit: Cover, Inhalte, Preisgestaltung</li>
+            <li>Direkter Zugang zu Millionen Lesern über den Amazon-Marktplatz</li>
+            <li>Attraktive Tantiemenmodelle (bis zu 70&nbsp;% beim eBook)</li>
+            <li>Schneller Markteintritt: Veröffentlichung oft in wenigen Tagen</li>
+          </ul>
+        </div>
+        <div class="sp-box fade-up">
+          <div class="sp-box__title">Herausforderungen</div>
+          <ul class="sp-list sp-list--challenge">
+            <li>Eigenverantwortung für Lektorat, Cover und Marketing</li>
+            <li>Aufbau einer Leserschaft ohne bestehendes Verlagsnetzwerk</li>
+            <li>Professionelle Qualitätssicherung ist entscheidend für Erfolg</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- PUBLISHING OPTIONS -->
+  <!-- UNSER LEISTUNGSSPEKTRUM -->
   <section class="section">
     <div class="container">
       <div class="fade-up">
-        <span class="section-label">Veröffentlichungswege</span>
-        <div class="divider"></div>
-        <h2>Welcher Weg passt zu Ihnen?</h2>
-        <p class="lead">Wir erklären die Optionen und helfen bei der Entscheidung.</p>
+        <div class="label">Unser Angebot</div>
+        <h2>Unser Leistungsspektrum im Self-Publishing</h2>
+        <p class="lead">Mit langjähriger beruflicher Erfahrung bei Kindle Direct Publishing (KDP) in Deutschland begleiten wir Autorinnen und Autoren auf ihrem Weg zur erfolgreichen Veröffentlichung. Unser Beratungsansatz ist praxisnah, individuell und darauf ausgerichtet, Ihr Buchprojekt professionell im Markt zu platzieren.</p>
       </div>
 
-      <div class="pub-options">
-        <div class="pub-option fade-up">
-          <h3>Traditioneller Verlag</h3>
-          <p>Der Verlag übernimmt Lektorat, Cover, Marketing und Vertrieb. Dafür geben Autoren Rechte ab und erhalten nur einen Teil der Erlöse.</p>
-        </div>
-        <div class="pub-option fade-up">
-          <h3>Literaturagent</h3>
-          <p>Agenten pitchen Manuskripte an Verlage und erhöhen die Annahmewahrscheinlichkeit. Vergütung provisionsbasiert.</p>
-        </div>
-        <div class="pub-option fade-up">
-          <h3>Großhandel / Buchhandel</h3>
-          <p>Bücher werden über Großhändler an Buchhandlungen verkauft. Erfordert stabiles Absatzvolumen.</p>
-        </div>
-        <div class="pub-option fade-up">
-          <h3>Amazon Seller Central</h3>
-          <p>Direkter Marketplace-Verkauf. Der Autor übernimmt Produktion, Lagerung und Versand selbst.</p>
-        </div>
-        <div class="pub-option fade-up">
-          <h3>Amazon Advantage</h3>
-          <p>Provisionsbasiertes Programm: Amazon kauft gedruckte Bücher und übernimmt Distribution.</p>
-        </div>
-        <div class="pub-option pub-option--featured fade-up">
-          <div class="pub-option__badge">Empfohlen</div>
-          <h3>Self-Publishing via KDP</h3>
-          <p>100 % kreative Freiheit über Cover, Inhalt und Preis. Bis zu 70 % Tantiemen bei eBooks. Der direkteste Weg zum eigenen Buch.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SERVICES OFFERED -->
-  <section class="section section--alt">
-    <div class="container">
-      <div class="fade-up">
-        <span class="section-label">Unser Angebot</span>
-        <div class="divider"></div>
-        <h2>Was wir leisten</h2>
-      </div>
-      <div class="why-list" style="margin-top:2rem;">
-        <div class="why-item fade-up">
-          <div class="why-item__icon">
+      <div class="svc-list">
+        <div class="svc-row fade-up">
+          <div class="svc-row__icon">
             <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
           </div>
           <div>
-            <div class="why-item__title">Verlagsberatung</div>
-            <p class="why-item__text">Analyse der geeignetsten Veröffentlichungsstrategie für Ihr Projekt.</p>
+            <div class="svc-row__title">Beratung zur Veröffentlichung über Self-Publishing</div>
+            <p class="svc-row__text">Orientierung im Dschungel der Veröffentlichungswege: von Kindle Direct Publishing bis hin zu alternativen Distributionsmöglichkeiten.</p>
           </div>
         </div>
-        <div class="why-item fade-up">
-          <div class="why-item__icon">
+        <div class="svc-row fade-up">
+          <div class="svc-row__icon">
             <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
           </div>
           <div>
-            <div class="why-item__title">Schritt-für-Schritt-Coaching</div>
-            <p class="why-item__text">Begleitung durch den gesamten Veröffentlichungsprozess.</p>
+            <div class="svc-row__title">Coaching zur Veröffentlichung</div>
+            <p class="svc-row__text">Begleitung Schritt für Schritt – von der Manuskriptvorbereitung bis zum Upload, damit Sie die Plattformen effizient und fehlerfrei nutzen.</p>
           </div>
         </div>
-        <div class="why-item fade-up">
-          <div class="why-item__icon">
+        <div class="svc-row fade-up">
+          <div class="svc-row__icon">
             <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
           </div>
           <div>
-            <div class="why-item__title">Marketing-Strategie</div>
-            <p class="why-item__text">Vermarktungskonzepte für maximale Sichtbarkeit und Verkaufserfolg.</p>
+            <div class="svc-row__title">Marketingberatung zum Vertrieb</div>
+            <p class="svc-row__text">Entwicklung individueller Marketingstrategien, um Reichweite und Sichtbarkeit zu erhöhen – von Amazon-Werbung bis Social-Media-Ansätzen.</p>
           </div>
         </div>
-        <div class="why-item fade-up">
-          <div class="why-item__icon">
-            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+        <div class="svc-row fade-up">
+          <div class="svc-row__icon">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
           </div>
           <div>
-            <div class="why-item__title">Dienstleister-Vermittlung</div>
-            <p class="why-item__text">Empfehlungen für professionelle Lektoren, Cover-Designer und weitere Spezialisten.</p>
+            <div class="svc-row__title">Vermittlung von Dienstleistungen</div>
+            <p class="svc-row__text">Unterstützung bei der Auswahl und Zusammenarbeit mit professionellen Dienstleistern wie Cover-Designern, Setzern oder Illustratoren.</p>
           </div>
         </div>
       </div>
 
-      <div style="background:rgba(55,181,255,0.08);border:1px solid rgba(55,181,255,0.2);border-radius:6px;padding:1.5rem 2rem;margin-top:2.5rem;" class="fade-up">
-        <p style="font-size:0.85rem;color:var(--gray-light);margin:0;"><strong style="color:var(--gray);">Hinweis:</strong> Nicht im Leistungsumfang enthalten sind Lektorat, Korrektorat und KDP-Account-Support.</p>
+      <div class="notice-box fade-up">
+        <strong>Wichtiger Hinweis:</strong> Eine Schreibschule, Korrektorat oder Lektorat gehören nicht zum angebotenen Leistungsumfang. Auch bei Problemen mit KDP wie z.B. Kontosperrungen können wir nicht unterstützen.
       </div>
     </div>
   </section>

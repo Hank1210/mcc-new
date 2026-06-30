@@ -3,10 +3,90 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Automation – MultiChannelConsult</title>
+  <title>Automation &amp; AI – MultiChannelConsult</title>
   <meta name="description" content="Workflow automation and AI-powered processes for your business. MultiChannelConsult implements scalable automation solutions with n8n and Make.com.">
   <link rel="icon" type="image/png" href="/assets/images/MCC_Website_512-512.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/style.css">
+  <style>
+    .hero__bg { opacity: 0.92; }
+    .hero__overlay {
+      background: linear-gradient(105deg,
+        rgba(15,22,36,0.82) 0%,
+        rgba(15,22,36,0.45) 45%,
+        rgba(15,22,36,0.05) 100%);
+    }
+
+    .label {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--blue); margin-bottom: 0.875rem;
+    }
+    .label::before {
+      content: ''; display: block; width: 20px; height: 2px;
+      background: var(--blue-light); border-radius: 2px;
+    }
+
+    .intro-split {
+      display: grid; grid-template-columns: 1fr 1.4fr;
+      gap: 3rem; align-items: center;
+    }
+    .intro-split__img { border-radius: var(--radius); overflow: hidden; }
+    .intro-split__img img { width: 100%; height: auto; display: block; }
+    .intro-split p { color: var(--gray); line-height: 1.75; margin-bottom: 1rem; }
+    .intro-split p:last-child { margin-bottom: 0; }
+
+    .stufen-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: var(--gray-border);
+      border: 1px solid var(--gray-border); border-radius: var(--radius);
+      overflow: hidden; margin-top: 2.5rem;
+    }
+    .stufen-cell { background: var(--white); padding: 2rem 1.75rem; }
+    .stufen-cell__num { font-size: 3rem; font-weight: 700; color: var(--blue); opacity: 0.12; line-height: 1; margin-bottom: 0.75rem; }
+    .stufen-cell__title { font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 0.5rem; }
+    .stufen-cell__text { font-size: 0.845rem; color: var(--gray-light); line-height: 1.7; }
+
+    .vorteile-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem; margin-top: 2.5rem;
+    }
+    .vorteil-card {
+      border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius);
+      padding: 1.75rem; background: rgba(255,255,255,0.04);
+    }
+    .vorteil-card__icon {
+      width: 44px; height: 44px; background: rgba(55,181,255,0.12);
+      border-radius: 10px; display: flex; align-items: center;
+      justify-content: center; margin-bottom: 1rem;
+    }
+    .vorteil-card__icon svg { width: 22px; height: 22px; stroke: var(--blue-light); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .vorteil-card__title { font-size: 0.95rem; font-weight: 700; color: #fff; margin-bottom: 0.4rem; }
+    .vorteil-card__text { font-size: 0.82rem; color: rgba(255,255,255,0.55); line-height: 1.65; }
+
+    .case-split {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: center; margin-top: 2.5rem;
+    }
+    .case-split__img { border-radius: var(--radius); overflow: hidden; box-shadow: 0 12px 40px rgba(0,0,0,0.1); }
+    .case-split__img img { width: 100%; display: block; }
+    .case-list { list-style: none; padding: 0; margin: 1.5rem 0 0; display: flex; flex-direction: column; gap: 0.875rem; }
+    .case-list li { display: flex; gap: 0.75rem; align-items: flex-start; font-size: 0.875rem; color: var(--gray); line-height: 1.6; }
+    .case-list li::before { content: '→'; color: var(--blue-light); font-weight: 700; flex-shrink: 0; margin-top: 0.05em; }
+
+    .section--dark .label { color: var(--blue-light); }
+    .section--dark .label::before { background: rgba(55,181,255,0.4); }
+    .section--dark h2 { color: #fff; }
+
+    @media (max-width: 900px) {
+      .intro-split, .case-split { grid-template-columns: 1fr; gap: 2rem; }
+      .stufen-grid { grid-template-columns: 1fr; }
+      .vorteile-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 540px) { .vorteile-grid { grid-template-columns: 1fr; } }
+  </style>
 </head>
 <body>
 
@@ -14,6 +94,7 @@
     <div class="nav__inner">
       <a href="/en/"><img src="/assets/images/Logo-MCC-Tagline-Final.png" alt="MultiChannelConsult" class="nav__logo"></a>
       <div class="nav__links">
+        <a href="/en/" class="nav__link">About us</a>
         <a href="/en/services/" class="nav__link">Services</a>
         <a href="/en/automation/" class="nav__link nav__link--active">Automation</a>
         <a href="/en/team/" class="nav__link">Team</a>
@@ -26,6 +107,7 @@
   </nav>
 
   <div class="nav__mobile">
+    <a href="/en/" class="nav__link">About us</a>
     <a href="/en/services/" class="nav__link">Services</a>
     <a href="/en/automation/" class="nav__link nav__link--active">Automation</a>
     <a href="/en/team/" class="nav__link">Team</a>
@@ -35,26 +117,25 @@
   </div>
 
   <section class="hero hero--sub">
-    <img src="/assets/images/Image_Finger_1280x630.png" alt="" class="hero__bg">
+    <img src="/assets/images/Image_KI_1280x630.png" alt="" class="hero__bg">
     <div class="hero__overlay"></div>
     <div class="hero__content">
       <span class="hero__eyebrow">Digital Future</span>
-      <h1 class="hero__title">Automation &amp; <span>AI</span></h1>
+      <h1 class="hero__title">Automation &amp; AI</h1>
       <p class="hero__subtitle">From classic process automation to autonomous AI agents – we implement scalable solutions that make your business more efficient.</p>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
-      <div class="content-split fade-up">
-        <div class="content-split__text">
-          <span class="section-label">Fundamentals</span>
-          <div class="divider"></div>
+      <div class="intro-split fade-up">
+        <div>
+          <div class="label">Fundamentals</div>
           <h2>What is Workflow Automation?</h2>
           <p>Workflow automation means the digitalisation and automation of recurring business processes. Instead of performing manual tasks repeatedly by hand, intelligent systems take over this work – reliably, error-free and around the clock.</p>
           <p>With modern low-code platforms like <strong>n8n</strong> and <strong>Make.com</strong>, workflows can be designed visually – without deep programming knowledge. This makes automation accessible for companies of any size.</p>
         </div>
-        <div class="content-split__img">
+        <div class="intro-split__img">
           <img src="/assets/images/KI-Workflow.jpg" alt="AI Workflow Automation">
         </div>
       </div>
@@ -64,32 +145,26 @@
   <section class="section section--alt">
     <div class="container">
       <div class="fade-up">
-        <span class="section-label">Three Evolution Levels</span>
-        <div class="divider"></div>
+        <div class="label">Three Evolution Levels</div>
         <h2>How AI is Changing Automation</h2>
         <p class="lead">Automation evolves – from simple rules to autonomous decisions.</p>
       </div>
-      <div class="steps">
-        <div class="step fade-up">
-          <div class="step__num">01</div>
-          <div>
-            <div class="step__title">Classic Automation</div>
-            <p class="step__text">Predefined responses to specific triggers. Suitable for rule-based, repetitive processes with clear if-then logic.</p>
-          </div>
+
+      <div class="stufen-grid">
+        <div class="stufen-cell fade-up">
+          <div class="stufen-cell__num">01</div>
+          <div class="stufen-cell__title">Classic Automation</div>
+          <p class="stufen-cell__text">Predefined responses to specific triggers. Suitable for rule-based, repetitive processes with clear if-then logic.</p>
         </div>
-        <div class="step fade-up">
-          <div class="step__num">02</div>
-          <div>
-            <div class="step__title">AI-Enhanced Automation</div>
-            <p class="step__text">Intelligent adaptation of actions based on context – e.g. personalised content creation or dynamic decisions.</p>
-          </div>
+        <div class="stufen-cell fade-up">
+          <div class="stufen-cell__num">02</div>
+          <div class="stufen-cell__title">AI-Enhanced Automation</div>
+          <p class="stufen-cell__text">Intelligent adaptation of actions based on context – e.g. personalised content creation or dynamic decisions.</p>
         </div>
-        <div class="step fade-up">
-          <div class="step__num">03</div>
-          <div>
-            <div class="step__title">AI Agents</div>
-            <p class="step__text">Autonomous decision-making based on complex data. Agents plan, prioritise and act independently within defined parameters.</p>
-          </div>
+        <div class="stufen-cell fade-up">
+          <div class="stufen-cell__num">03</div>
+          <div class="stufen-cell__title">AI Agents</div>
+          <p class="stufen-cell__text">Autonomous decision-making based on complex data. Agents plan, prioritise and act independently within defined parameters.</p>
         </div>
       </div>
     </div>
@@ -98,16 +173,41 @@
   <section class="section section--dark">
     <div class="container">
       <div class="fade-up">
-        <span class="section-label">Benefits at a Glance</span>
-        <div class="divider" style="background:linear-gradient(to right, #37b5ff, rgba(55,181,255,0.3));"></div>
+        <div class="label">Benefits at a Glance</div>
         <h2>What Automation Delivers</h2>
       </div>
-      <div class="benefits">
-        <div class="benefit fade-up"><div class="benefit__icon">⚡</div><div><div class="benefit__title">Increase Efficiency</div><p class="benefit__text">Eliminate routine tasks – gain strategic focus.</p></div></div>
-        <div class="benefit fade-up"><div class="benefit__icon">💰</div><div><div class="benefit__title">Reduce Costs</div><p class="benefit__text">Conserve resources through automated, scalable processes.</p></div></div>
-        <div class="benefit fade-up"><div class="benefit__icon">✓</div><div><div class="benefit__title">Minimise Errors</div><p class="benefit__text">Consistent quality through rule-based execution.</p></div></div>
-        <div class="benefit fade-up"><div class="benefit__icon">📈</div><div><div class="benefit__title">Scalability</div><p class="benefit__text">Enable growth without proportional headcount increases.</p></div></div>
-        <div class="benefit fade-up"><div class="benefit__icon">🎯</div><div><div class="benefit__title">Relieve Employees</div><p class="benefit__text">More motivation through demanding, value-adding work.</p></div></div>
+
+      <div class="vorteile-grid">
+        <div class="vorteil-card fade-up">
+          <div class="vorteil-card__icon"><svg viewBox="0 0 24 24"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+          <div class="vorteil-card__title">Increase Efficiency</div>
+          <p class="vorteil-card__text">Eliminate routine tasks – gain strategic focus.</p>
+        </div>
+        <div class="vorteil-card fade-up">
+          <div class="vorteil-card__icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+          <div class="vorteil-card__title">Reduce Costs</div>
+          <p class="vorteil-card__text">Conserve resources through automated, scalable processes.</p>
+        </div>
+        <div class="vorteil-card fade-up">
+          <div class="vorteil-card__icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div class="vorteil-card__title">Minimise Errors</div>
+          <p class="vorteil-card__text">Consistent quality through rule-based execution.</p>
+        </div>
+        <div class="vorteil-card fade-up">
+          <div class="vorteil-card__icon"><svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
+          <div class="vorteil-card__title">Scalability</div>
+          <p class="vorteil-card__text">Enable growth without proportional headcount increases.</p>
+        </div>
+        <div class="vorteil-card fade-up">
+          <div class="vorteil-card__icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <div class="vorteil-card__title">Relieve Employees</div>
+          <p class="vorteil-card__text">More motivation through demanding, value-adding work.</p>
+        </div>
+        <div class="vorteil-card fade-up">
+          <div class="vorteil-card__icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M4.93 4.93a10 10 0 0 0 0 14.14"/></svg></div>
+          <div class="vorteil-card__title">24/7 Availability</div>
+          <p class="vorteil-card__text">Processes run without interruption – even outside business hours.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -115,22 +215,22 @@
   <section class="section">
     <div class="container">
       <div class="fade-up">
-        <span class="section-label">Case Study</span>
-        <div class="divider"></div>
+        <div class="label">Case Study</div>
         <h2>Case Study: AI-Powered Chatbot</h2>
       </div>
-      <div class="content-split content-split--reverse" style="margin-top:2.5rem;">
-        <div class="content-split__text fade-up">
-          <p>An example of AI-powered automation: an intelligent chatbot that understands documents, responds contextually and logs conversations – fully automated.</p>
-          <ul style="list-style:none;padding:0;margin-top:1.5rem;display:flex;flex-direction:column;gap:0.75rem;">
-            <li style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.9rem;color:var(--gray);"><span style="color:var(--blue-light);font-weight:700;flex-shrink:0;">→</span><span><strong>Document Vectorisation:</strong> Content is made semantically processable</span></li>
-            <li style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.9rem;color:var(--gray);"><span style="color:var(--blue-light);font-weight:700;flex-shrink:0;">→</span><span><strong>AI Decision Nodes:</strong> Intelligent routing and response generation</span></li>
-            <li style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.9rem;color:var(--gray);"><span style="color:var(--blue-light);font-weight:700;flex-shrink:0;">→</span><span><strong>Conversation Memory:</strong> Contextual conversation history management</span></li>
-            <li style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.9rem;color:var(--gray);"><span style="color:var(--blue-light);font-weight:700;flex-shrink:0;">→</span><span><strong>Semantic Document Search:</strong> Precise information extraction</span></li>
-            <li style="display:flex;gap:0.75rem;align-items:flex-start;font-size:0.9rem;color:var(--gray);"><span style="color:var(--blue-light);font-weight:700;flex-shrink:0;">→</span><span><strong>Automated Logging:</strong> Conversation data directly into spreadsheets</span></li>
+
+      <div class="case-split">
+        <div class="fade-up">
+          <p style="color:var(--gray);line-height:1.75;">An example of AI-powered automation: an intelligent chatbot that understands documents, responds contextually and logs conversations – fully automated.</p>
+          <ul class="case-list">
+            <li><span><strong>Document Vectorisation:</strong> Content is made semantically processable</span></li>
+            <li><span><strong>AI Decision Nodes:</strong> Intelligent routing and response generation</span></li>
+            <li><span><strong>Conversation Memory:</strong> Contextual conversation history management</span></li>
+            <li><span><strong>Semantic Document Search:</strong> Precise information extraction</span></li>
+            <li><span><strong>Automated Logging:</strong> Conversation data directly into spreadsheets</span></li>
           </ul>
         </div>
-        <div class="content-split__img fade-up">
+        <div class="case-split__img fade-up">
           <img src="/assets/images/ChatBot-Case.png" alt="ChatBot Case Study">
         </div>
       </div>

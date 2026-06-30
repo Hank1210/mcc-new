@@ -21,6 +21,7 @@
     .nav .nav__logo { filter: none; }
     .nav .nav__link { color: var(--gray); }
     .nav .nav__link:hover { color: var(--blue); }
+    .nav .nav__link--active { color: var(--blue); }
     .nav .nav__lang a { color: var(--gray-light); }
     .nav .nav__lang a.active,
     .nav .nav__lang a:hover { color: var(--blue); }
@@ -165,6 +166,24 @@
       background: var(--white);
       padding: 2.5rem 2rem;
       position: relative;
+      transition: background 0.2s, box-shadow 0.2s;
+      cursor: default;
+    }
+    .pillar-col::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--blue-light);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .pillar-col:hover {
+      background: var(--bg);
+      box-shadow: inset 0 -4px 12px rgba(55,181,255,0.06);
+    }
+    .pillar-col:hover::after {
+      opacity: 1;
     }
 
     .pillar-col__num {
@@ -322,13 +341,13 @@
 
     .team-card__img {
       width: 100%;
-      height: 220px;
+      height: 400px;
       object-fit: cover;
-      object-position: center 8%;
+      object-position: center 14%;
       display: block;
     }
     .team-card__img--frank {
-      object-position: center 12%;
+      object-position: center 10%;
     }
 
     .team-card__body {
@@ -424,7 +443,7 @@
   <nav class="nav" id="nav">
     <div class="nav__inner">
       <a href="/"><img src="/assets/images/Logo-MCC-Tagline-Final.png" alt="MultiChannelConsult" class="nav__logo"></a>
-      <div class="nav__links">
+      <div class="nav__links">    <a href="/" class="nav__link nav__link--active">Über uns</a>
         <a href="/leistungen/" class="nav__link">Leistungen</a>
         <a href="/automation/" class="nav__link">Automation</a>
         <a href="/team/" class="nav__link">Team</a>
@@ -442,6 +461,7 @@
 
   <!-- MOBILE NAV -->
   <div class="nav__mobile">
+    <a href="/" class="nav__link nav__link--active">Über uns</a>
     <a href="/leistungen/" class="nav__link">Leistungen</a>
     <a href="/automation/" class="nav__link">Automation</a>
     <a href="/team/" class="nav__link">Team</a>
@@ -532,7 +552,7 @@
           <p>Vernetzte Systeme statt paralleler Kanäle – für messbaren Geschäftsnutzen und ein nahtloses Kundenerlebnis über alle Touchpoints.</p>
         </div>
         <div class="mc-split__img">
-          <img src="/assets/images/Image_Finger_1280x630.png" alt="Multichannel Vernetzung">
+          <img src="/assets/images/Image-Together.png" alt="Multichannel Vernetzung">
         </div>
       </div>
     </div>
@@ -603,7 +623,7 @@
 
       <div class="team-list">
         <div class="team-card fade-up">
-          <img src="/assets/images/Daniel_Euler_Portrait_02a.jpg" alt="Alexander Daniel Euler" class="team-card__img">
+          <img src="/assets/images/Daniel_Euler_Square.jpg" alt="Alexander Daniel Euler" class="team-card__img">
           <div class="team-card__body">
             <div class="team-card__name">Alexander Daniel Euler</div>
             <div class="team-card__role">Managing Partner</div>
@@ -621,7 +641,7 @@
         </div>
 
         <div class="team-card fade-up">
-          <img src="/assets/images/Eulerfra-Press-Bus_Office_250808.png" alt="Frank Rüdiger Euler" class="team-card__img team-card__img--frank">
+          <img src="/assets/images/Eulerfra-Press_Square.png" alt="Frank Rüdiger Euler" class="team-card__img team-card__img--frank">
           <div class="team-card__body">
             <div class="team-card__name">Frank Rüdiger Euler</div>
             <div class="team-card__role">Partner</div>
