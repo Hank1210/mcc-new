@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seite nicht gefunden (404) – MultiChannelConsult</title>
+  <meta name="robots" content="noindex, follow">
+  <!-- Root-absolute Pfade: 404 wird für beliebige URL-Tiefen ausgeliefert -->
+  <link rel="icon" type="image/png" href="/assets/images/MCC_Website_512-512.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <style>
+    .err {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem var(--gutter);
+      background: var(--bg-dark);
+    }
+    .err__logo { height: 38px; width: auto; margin-bottom: 2.5rem; filter: brightness(0) invert(1); opacity: 0.9; }
+    .err__code {
+      font-size: clamp(4rem, 14vw, 8rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: var(--blue-light);
+      margin-bottom: 0.5rem;
+    }
+    .err__title {
+      font-size: clamp(1.3rem, 3vw, 1.9rem);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.75rem;
+    }
+    .err__text {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.65);
+      max-width: 46ch;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+    .err__actions { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; }
+    .err__btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      border-radius: 99px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .err__btn--primary { background: var(--blue-light); color: var(--bg-dark); }
+    .err__btn--primary:hover { background: #fff; }
+    .err__btn--ghost { border: 1px solid rgba(255,255,255,0.25); color: #fff; }
+    .err__btn--ghost:hover { border-color: var(--blue-light); color: var(--blue-light); }
+    .err__links { margin-top: 2.5rem; font-size: 0.8rem; color: rgba(255,255,255,0.5); }
+    .err__links a { color: rgba(255,255,255,0.75); }
+    .err__links a:hover { color: var(--blue-light); }
+    .err__sep { margin: 0 0.6rem; color: rgba(255,255,255,0.25); }
+  </style>
+</head>
+<body>
+  <main class="err">
+    <a href="/"><img width="600" height="112" src="/assets/images/Logo-MCC-Tagline-Final.webp" alt="MultiChannelConsult" class="err__logo"></a>
+    <div class="err__code">404</div>
+    <h1 class="err__title">Seite nicht gefunden</h1>
+    <p class="err__text">Diese Seite existiert nicht oder wurde verschoben. <span style="opacity:0.7;">(This page could not be found.)</span></p>
+    <div class="err__actions">
+      <a href="/" class="err__btn err__btn--primary">Zur Startseite</a>
+      <a href="/leistungen/" class="err__btn err__btn--ghost">Leistungen</a>
+    </div>
+    <div class="err__links">
+      <a href="/leistungen/">Leistungen</a><span class="err__sep">·</span>
+      <a href="/automation/">Automation</a><span class="err__sep">·</span>
+      <a href="/team/">Team</a><span class="err__sep">·</span>
+      <a href="/en/">English</a>
+    </div>
+  </main>
+</body>
+</html>

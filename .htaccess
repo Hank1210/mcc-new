@@ -37,8 +37,8 @@ AddType video/mp4 .mp4
   ExpiresByType application/javascript "access plus 1 week"
 </IfModule>
 
-# Custom 404
-ErrorDocument 404 /index.html
+# Custom 404 (echte Fehlerseite, liefert 404-Status)
+ErrorDocument 404 /404.html
 
 # Security headers
 <IfModule mod_headers.c>
